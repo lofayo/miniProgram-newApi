@@ -1,0 +1,6 @@
+<!--pages/welcome/welcome.wxml-->
+<view class='welcome_box'>
+  <image class='me_logo' src='/images/me.jpg'></image>
+  <text>hello lofayo</text>
+  <button bindtap="toArticleLists">开启小程序之旅</button>
+</view>

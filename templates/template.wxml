@@ -1,0 +1,27 @@
+<!--templates/template.wxml-->
+<!--电影列表中的电影项模板  -->
+<template name="movie_item">
+  <view class='movie_item' bindtap='toMovieSubject' data-subject_id='{{id}}'>
+    <image src='{{images.large}}' class='movie_surface'></image>
+    <text class='movie_title'>{{title}}</text>
+    <view class='comment'>
+      <block wx:for='{{rating.star}}' wx:for-item='star_item' wx:key='index'>
+        <image class='star' src="{{star_item === 1 ? '/images/icon/star.png' : '/images/icon/none-star.png'}}"></image>
+      </block>
+      <text style='padding-left:24rpx;'>{{rating.average}}</text>
+    </view>
+  </view>
+</template>
+
+<!--电影分类列表的电影分类项模板  -->
+<template name="movie_category">
+   <view class='movie_container'>
+    <view class='item_title'>
+      <text class='category_title'>{{category}}</text>
+      <text bindtap='toMovieLists' data-category_id='{{category_id}}' data-category='{{category}}' class='more'>更多 ></text>
+    </view>
+    <block wx:for='{{subjects}}' wx:for-item='movie_item' wx:key='index'>
+      <template is="movie_item" data="{{...movie_item}}" />
+    </block>
+  </view> 
+</template>

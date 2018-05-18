@@ -1,0 +1,39 @@
+/* pages/article/article.wxss */
+swiper {
+  height: 400rpx;
+}
+.slide-image {
+  width:750rpx;
+  height:400rpx;
+}
+.article_info {
+  margin: 40rpx 0 80rpx;
+}
+.avatar {
+  height: 160rpx;
+  line-height: 160rpx;
+}
+
+.avatar text {
+  color:#999;
+}
+
+.cover {
+  width: 100%;
+  height: 300rpx;
+}
+
+.info_content {
+  font-size: 24rpx;
+  color:#666;
+}
+.col_see {
+  font-size: 24rpx;
+  margin: 12rpx 0;
+}
+.star,.see {
+  width: 24rpx;
+  height: 24rpx;
+  margin: 0 12rpx;
+}
+

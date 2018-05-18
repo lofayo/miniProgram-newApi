@@ -1,0 +1,40 @@
+{
+    "pages": [
+        "pages/welcome/welcome",
+        "dobuan-movie/category/category",
+        "test/test",
+        "dobuan-movie/movie-subject/movie-subject",
+        "pages/article/article",
+        "dobuan-movie/movie-lists/movie-lists",
+        "pages/article-content/article-content",
+        "pages/index/index",
+        "pages/logs/logs",
+        "templates/template"
+    ],
+    "window":
+    {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#F0F8FF",
+        "navigationBarTitleText": "一段有意思的小程序",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar":
+    {
+        "color": "#ccc",
+        "selectedColor": "blue",
+        "list": [
+        {
+            "pagePath": "pages/article/article",
+            "text": "最新影评",
+            "iconPath": "/images/tab/yuedu.png",
+            "selectedIconPath": "/images/tab/yuedu_hl.png"
+        },
+        {
+            "pagePath": "dobuan-movie/category/category",
+            "text": "豆瓣电影",
+            "iconPath": "/images/tab/dianying.png",
+            "selectedIconPath": "/images/tab/dianying_hl.png"
+        }]
+    },
+    "degbug": false
+}

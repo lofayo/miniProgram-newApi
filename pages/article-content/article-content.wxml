@@ -1,0 +1,19 @@
+<!--pages/article-content/article-content.wxml-->
+<view class='header'>
+  <image class='header_img' src='{{isPlayMusic ? currentArticle.music.coverImg : currentArticle.headImgSrc}}'></image>
+  <image bindtap='playMusic' class='music_icon' src="{{isPlayMusic?'/images/music/music-stop.png':'/images/music/music-start.png'}}"></image>
+</view>
+<view class='article_content_info'>
+  <view class='article_release'>
+    <image class='author_logo' src='{{currentArticle.avatar}}'></image>
+    <text style='margin-right:48rpx;'>{{currentArticle.author}}</text>
+    <text>发表于 {{currentArticle.dateTime}}</text>
+  </view>
+  <text class='title'>{{currentArticle.title}}</text>
+  <view class='col_share'>
+    <image src='/images/icon/share.png'></image>
+    <image bindtap='collect' style='margin-right:36rpx;' src="{{!isCurrentCollected ? '/images/icon/collection-anti.png' : '/images/icon/collection.png'}}"></image>
+    <text class='line'></text>
+  </view>
+  <text class='article_content_text'>{{currentArticle.detail}}</text>
+</view>

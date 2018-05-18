@@ -1,0 +1,36 @@
+<!--dobuan-movie/movie-subject/movie-subject.wxml-->
+<view class='subject'>
+  <view class='images_large_box'>
+    <image class='images_large' src='{{subject.images.large}}'></image>
+  </view>
+  <view class='subject_text'>
+    <text class='subject_title'>{{subject.title}}</text>
+    <view>
+      <block wx:for='{{subject.countries}}'>
+        <text>{{item}} / </text>
+      </block>
+
+      <text>{{subject.year}}</text>
+      <block wx:for='{{subject.genres}}'>
+        <text> / {{item}}</text>
+      </block>
+    </view>
+    <view>
+      <text>导演：</text>
+      <block wx:for='{{subject.directors}}'>
+        <text> / {{item.name}}</text>
+      </block>
+    </view>
+    <view>
+      <text>主演：</text>
+      <block wx:for='{{subject.casts}}'>
+        <text> / {{item.name}}</text>
+      </block>
+    </view>
+    <view>
+      <text>影评数量：{{subject.reviews_count}}</text>
+      <text>想看数量：{{subject.wish_count}}</text>
+    </view>
+    <text class='subject_summary'>{{subject.summary}}</text>
+  </view>
+</view>

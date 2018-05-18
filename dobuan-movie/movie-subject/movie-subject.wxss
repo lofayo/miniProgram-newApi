@@ -1,0 +1,29 @@
+/* dobuan-movie/movie-subject/movie-subject.wxss */
+.images_large_box {
+  background-color: #F0F8FF;
+  padding: 36rpx 0;
+}
+.images_large {
+  width: 300rpx;
+  height: 400rpx;
+  margin: 0 auto;
+  display: block;
+}
+.subject_title {
+  font-size: 36rpx;
+  color: #000;
+}
+.subject_text {
+  font-size: 20rpx;
+  color:#999;
+  padding: 24rpx;
+}
+.subject_summary {
+  font-size: 24rpx;
+  color:#000;
+  text-indent: 2em;
+}
+text {
+  display: inline-block;
+  margin:12rpx 0;
+}

@@ -1,0 +1,30 @@
+<!--pages/article/article.wxml-->
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+  <block wx:for="{{articleLists}}" wx:key="postId">
+    <swiper-item>
+      <image bindtap="toArticleContent" data-article_id='{{item.postId}}' src="{{item.headImgSrc}}" class="slide-image"/>
+    </swiper-item>
+  </block>
+</swiper>
+
+
+<block wx:for="{{articleLists}}" wx:key='postId'>
+  <view class='article_info'>
+    <view class='avatar'>
+      <image class='author_logo' src="{{item.avatar}}"></image>
+      <text>{{item.date}}</text>
+    </view>
+    <text class='title'>{{item.title}}</text>
+    <view bindtap='toArticleContent' data-article_id='{{item.postId}}'>
+      <image class='cover' src='{{item.imgSrc}}'></image>
+      <text class='info_content'>{{item.content}}</text>
+    </view>
+    <view class='col_see'>
+      <image class='star' src='/images/icon/none-star.png'></image>
+      <text>{{item.collection}}</text>
+      <image class='see' src='/images/icon/view.png'></image>
+      <text>{{item.reading}}</text>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,7 @@
+<!--test/test.wxml-->
+<!-- <web-view src="http://www.pospi.com/html/home-page.html"></web-view> -->
+<!-- <web-view src="http://new.pospi.com/app/index.php?i=8&c=entry&do=index&m=yhh_video"></web-view> -->
+<view wx:for='{{info}}'>
+  <text>{{item.name}}</text>
+  <text> {{item.sex}}</text>
+</view>

@@ -1,0 +1,7 @@
+<!--dobuan-movie/category/category.wxml-->
+ <!-- <web-view src="http://localhost/test1/video/index3.html"></web-view>  -->
+ <import src="/templates/template.wxml" />
+<block wx:for='{{moviesCategory}}' wx:key='index'>
+  <!--将循环的每一项渲染模板，是将每项json展开传入  -->
+    <template is="movie_category" data="{{...item}}" />
+</block>   
