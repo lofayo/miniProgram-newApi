@@ -6,24 +6,24 @@
   <view class='subject_text'>
     <text class='subject_title'>{{subject.title}}</text>
     <view>
-      <block wx:for='{{subject.countries}}'>
+      <block wx:for='{{subject.countries}}' wx:key='index'>
         <text>{{item}} / </text>
       </block>
 
       <text>{{subject.year}}</text>
-      <block wx:for='{{subject.genres}}'>
+      <block wx:for='{{subject.genres}}' wx:key='index'>
         <text> / {{item}}</text>
       </block>
     </view>
     <view>
       <text>导演：</text>
-      <block wx:for='{{subject.directors}}'>
+      <block wx:for='{{subject.directors}}' wx:key='index'>
         <text> / {{item.name}}</text>
       </block>
     </view>
     <view>
       <text>主演：</text>
-      <block wx:for='{{subject.casts}}'>
+      <block wx:for='{{subject.casts}}' wx:key='index'>
         <text> / {{item.name}}</text>
       </block>
     </view>

@@ -1,0 +1,17 @@
+/* dobuan-movie/category/category.wxss */
+@import "/templates/template.wxss";
+
+page {
+  background-color: #ddd;
+}
+.search_box {
+   background-color: #F0F8FF; 
+   padding: 12rpx;
+}
+.search_input {
+  background-color: #fff;
+  font-size: 24rpx;
+  border-radius: 10rpx;
+  padding-left: 24rpx;
+}
+

@@ -1,8 +1,0 @@
-/* dobuan-movie/category/category.wxss */
-@import "/templates/template.wxss";
-
-page {
-  background-color: #ddd;
-}
-
-

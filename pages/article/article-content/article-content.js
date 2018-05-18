@@ -157,9 +157,9 @@ Page({
       })
     }
     // 音乐播放结束，切换为原始状态
-    app.globalData.innerAudioContext.onEnded(()=>{
+    app.globalData.innerAudioContext.onEnded(() => {
       _this.setData({
-        isPlayMusic:false
+        isPlayMusic: false
       })
     })
 
@@ -171,7 +171,7 @@ Page({
         var collectRecord = res.data
         // 2、如果当前页面被设置过收藏，则渲染收藏结果
         if (collectRecord[key] !== undefined) {
-          console.log(collectRecord[key])
+          // console.log(collectRecord[key])
           _this.setData({
             isCurrentCollected: collectRecord[key]
           })
@@ -244,8 +244,7 @@ Page({
    * 播放音乐的 内部audio上下文
    */
   playMusic: function () {
-   
-    var _this=this
+    var _this = this
     // 而是在点击下一首歌时，重置url
     // 这个地方要区分要区分当前页面的播放暂停，还是新进入页面的开始播放
     // 新进入页面才需要设置url
@@ -260,12 +259,26 @@ Page({
       app.globalData.innerAudioContext.pause()
       app.globalData.musicPlayerPlay = false
     }
-    app.globalData.innerAudioContext.onPlay(()=>{
-      _this.setData({
-        isPlayMusic: !this.data.isPlayMusic
-      })
+
+    // app.globalData.innerAudioContext.onPlay(()=>{
+    //   console.log('play')
+    //   _this.setData({
+    //     isPlayMusic: !_this.data.isPlayMusic
+    //   }) 
+    // })
+    // // 为什么暂停事件触发了两次
+    // app.globalData.innerAudioContext.onPause(() => {
+    //   console.log(_this.data.isPlayMusic)
+
+    //   console.log('pause')
+    //   _this.setData({
+    //     isPlayMusic: !_this.data.isPlayMusic
+    //   })
+    // })
+    _this.setData({
+      isPlayMusic: !_this.data.isPlayMusic
     })
-    
+
   },
 
   /**

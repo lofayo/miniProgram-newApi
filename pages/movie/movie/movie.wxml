@@ -1,6 +1,9 @@
 <!--dobuan-movie/category/category.wxml-->
  <!-- <web-view src="http://localhost/test1/video/index3.html"></web-view>  -->
  <import src="/templates/template.wxml" />
+ <view class='search_box'>
+    <input confirm-hold='true' confirm-type='search' class='search_input' type='text' placeholder='请输入搜索关键字' placeholder-style='color:#ccc;font-size:20rpx' cursor='20' ></input>
+ </view>
 <block wx:for='{{moviesCategory}}' wx:key='index'>
   <!--将循环的每一项渲染模板，是将每项json展开传入  -->
     <template is="movie_category" data="{{...item}}" />

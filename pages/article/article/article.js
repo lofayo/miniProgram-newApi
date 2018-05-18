@@ -189,7 +189,7 @@ Page({
   toArticleContent: function (e) {
     var articleID = e.currentTarget.dataset.article_id;
     wx.navigateTo({
-      url: '/pages/article-content/article-content?articleID='+articleID
+      url: '/pages/article/article-content/article-content?articleID='+articleID
     })
   }
 })

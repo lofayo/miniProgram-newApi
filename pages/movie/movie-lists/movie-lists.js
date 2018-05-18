@@ -1,4 +1,4 @@
-// dobuan-movie/movie-lists/movie-lists.js
+// pages/movie/movie-lists/movie-lists.js
 const common = require('../common.js')
 const addStarArray = common.addStarArray
 
@@ -140,7 +140,7 @@ Page({
     // console.log(e)
     let subject_id = e.currentTarget.dataset.subject_id
     wx.navigateTo({
-      url: "/dobuan-movie/movie-subject/movie-subject?subject_id=" + subject_id,
+      url: "/pages/movie/movie-subject/movie-subject?subject_id=" + subject_id,
     })
   }
 })

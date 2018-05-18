@@ -1,4 +1,3 @@
-// dobuan-movie/category/category.js
 
 const common = require('../common.js')
 const addStarArray = common.addStarArray
@@ -47,33 +46,7 @@ Page({
       })
     }
 
-    // let resData = requestAPI(commonAPI[i].url)
-    // resData['category'] = commonAPI[i].category
-    // tempArr.push(resData)
-    // _this.setData({
-    //   moviesCategory: tempArr
-    // })
-    // console.log(_this.data.moviesCategory)
-    // wx.request({
-    //   url: 'http://t.yushu.im/v2/movie/in_theaters?start=0&count=3', 
-    //   header: {
-    //     'content-type': 'application/json' // 默认值
-    //   },
-    //   success: function (res) {
-    //     console.log(res.data)
-    //     var resData = res.data
-    //     resData['category'] = '正在热映'
-    //     var tempArr = []
-    //     tempArr.push(resData)
-    //     console.log(tempArr)
-    //     _this.setData({
-    //       moviesCategory: tempArr
-    //     })
-    //     // _this.data.moviesCategory=resData.subjects
-    //     // _this.data.moviesCategory.push(resData)
-    //     console.log(_this.data.moviesCategory)
-    //   }
-    // })
+    
   },
 
   /**
@@ -132,7 +105,7 @@ Page({
     let category_id = e.currentTarget.dataset.category_id
     let category = e.currentTarget.dataset.category
     wx.navigateTo({
-      url: "/dobuan-movie/movie-lists/movie-lists?category_id=" + category_id + '&category=' + category,
+      url: "/pages/movie/movie-lists/movie-lists?category_id=" + category_id + '&category=' + category,
     })
   }
   ,
@@ -144,7 +117,7 @@ Page({
     // console.log(e)
     let subject_id = e.currentTarget.dataset.subject_id
     wx.navigateTo({
-      url: "/dobuan-movie/movie-subject/movie-subject?subject_id=" + subject_id,
+      url: "/pages/movie/movie-subject/movie-subject?subject_id=" + subject_id,
     })
   }
 })

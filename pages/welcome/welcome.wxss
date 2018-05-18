@@ -12,4 +12,5 @@
   width: 200rpx;
   height: 200rpx;
   border-radius: 50%;
+  background: url('http://old.bz55.com/uploads/allimg/140527/1-14052G42220.jpg') no-repeat center / cover;
 }
