@@ -1,6 +1,6 @@
 /* dobuan-movie/movie-subject/movie-subject.wxss */
 .images_large_box {
-  background-color: #F0F8FF;
+  background-color: #F8F8FF;
   padding: 36rpx 0;
 }
 .images_large {

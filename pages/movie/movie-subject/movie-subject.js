@@ -1,4 +1,8 @@
 // dobuan-movie/movie-subject/movie-subject.js
+const movie = require('../common.js')
+const movie_subject_api = movie.movie_subject_api
+const addStarArray = movie.addStarArray
+
 Page({
 
   /**
@@ -14,10 +18,11 @@ Page({
   onLoad: function (options) {
     let _this = this
     let subject_id = options.subject_id
-    let url = 'http://t.yushu.im/v2/movie/subject/' + subject_id
-    // let url = 'http://t.yushu.im/v2/movie/subject/326'
     wx.request({
-      url: url,
+      url: movie_subject_api+subject_id,
+      header: {
+        'content-type': 'json' // 默认值
+      },
       success:function(res){
         _this.setData({
           subject:res.data

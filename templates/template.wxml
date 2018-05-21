@@ -1,6 +1,6 @@
 <!--templates/template.wxml-->
 <!--电影列表中的电影项模板  -->
-<template name="movie_item">
+<template name="movie_item_template">
   <view class='movie_item' bindtap='toMovieSubject' data-subject_id='{{id}}'>
     <image src='{{images.large}}' class='movie_surface'></image>
     <text class='movie_title'>{{title}}</text>
@@ -14,16 +14,21 @@
 </template>
 
 <!--电影分类列表的电影分类项模板  -->
-<template name="movie_category">
-   <view class='movie_container'>
+<template name="movie_category_template">
+  <view class='movie_container'>
     <view class='item_title'>
-      <text class='category_title'>{{category}}</text>
-      <text bindtap='toMovieLists' data-category_id='{{category_id}}' data-category='{{category}}' class='more'>更多 ></text>
+      <text class='category_title'>{{name}}</text>
+      <text bindtap='toMovieLists' data-url_id='{{url_id}}' data-category_name='{{name}}' class='more'>更多 ></text>
     </view>
     <block wx:for='{{subjects}}' wx:for-item='movie_item' wx:key='index'>
-      <template is="movie_item" data="{{...movie_item}}" />
+      <template is="movie_item_template" data="{{...movie_item}}" />
     </block>
-  </view> 
+  </view>
 </template>
 
 <!--搜索框模板  -->
+<template name='input_search_template'>
+  <view class='search_box'>
+    <input bindtap='toSearchPage' disabled='true' confirm-type='search' class='search_input' type='text' placeholder='请输入搜索关键字' placeholder-style='color:#ccc;font-size:20rpx'></input>
+  </view>
+</template>

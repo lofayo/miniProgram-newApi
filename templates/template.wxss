@@ -42,3 +42,15 @@
   box-sizing: border-box;
   margin-bottom: 36rpx;
 }
+
+/*搜索框模板的样式  */
+.search_box {
+   background-color: #F8F8FF; 
+   padding: 12rpx;
+}
+.search_input {
+  background-color: #fff;
+  font-size: 24rpx;
+  border-radius: 10rpx;
+  padding-left: 48rpx;
+}

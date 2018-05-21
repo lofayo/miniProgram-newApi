@@ -1,2 +1,14 @@
 <!--pages/movie/movie-search/movie-search.wxml-->
-<text>pages/movie/movie-search/movie-search.wxml</text>
+<import src="/templates/template.wxml" />
+<!-- <template is='input_search_template' data='{{focus}}' /> -->
+<view class='search_box'>
+  <input bindconfirm='searching' focus='true' confirm-type='search' class='search_input' type='text' placeholder='请输入搜索关键字' placeholder-style='color:#ccc;font-size:20rpx'></input>
+</view>
+<view class='movie_container'>
+  <block wx:if='{{searchData.length != 0}}'>
+    <block wx:for='{{searchData}}' wx:key='index'>
+      <template is='movie_item_template' data='{{...item}}' />
+    </block>
+  </block>
+
+</view>
