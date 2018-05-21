@@ -1,10 +1,29 @@
 <!--dobuan-movie/movie-subject/movie-subject.wxml-->
 <view class='subject'>
-  <view class='images_large_box'>
-    <image class='images_large' src='{{subject.images.large}}'></image>
+  <view class='header' style='background:url("{{subject.images.large}}") no-repeat 0 0 / 100%'>
+    <view class='header_text'>
+      <image class='images_large' src='{{subject.images.large}}'></image>
+      <view class='text' style='margin-left:40rpx;height: 300rpx;display:flex;flex-direction:column;justify-content:space-around;'>
+        <text class='subject_title'>{{subject.title}}</text>
+        <view style='display:flex;flex-direction:row;align-items:center;'>
+          <text class='subject_title'>{{subject.rating.average}}</text>
+          <view style='margin-left:20rpx;display:flex;flex-direction:column;align-items:center;'>
+            <view>
+              <block wx:for='{{subject.rating.star}}' wx:for-item='star_item' wx:key='index'>
+                <image class='star' src="{{star_item === 1 ? '/images/icon/star.png' : '/images/icon/none-star.png'}}"></image>
+              </block>
+            </view>
+
+            <text class='subject_title' style='font-size:20rpx;color:#eee;'>{{subject.ratings_count}}人评价</text>
+          </view>
+
+        </view>
+
+      </view>
+    </view>
   </view>
   <view class='subject_text'>
-    <text class='subject_title'>{{subject.title}}</text>
+
     <view>
       <block wx:for='{{subject.countries}}' wx:key='index'>
         <text>{{item}} / </text>

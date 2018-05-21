@@ -67,10 +67,16 @@ const starArray = [
  * eg:addStarArray([])
  */
 function addStarArray(subjects) {
+  if (Array.isArray(subjects)) {
     for (let i = 0; i < subjects.length; i++) {
-        let stars = subjects[i].rating.stars
-        subjects[i].rating['star'] = starArray[Math.round(stars / 10)]
+      let stars = subjects[i].rating.stars
+      subjects[i].rating['star'] = starArray[Math.round(stars / 10)]
     }
+  } else {
+    let stars = subjects.rating.stars
+    subjects.rating['star'] = starArray[Math.round(stars / 10)]
+  }
+    
 }
 
 

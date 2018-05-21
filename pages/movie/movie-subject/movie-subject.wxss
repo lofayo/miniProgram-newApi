@@ -1,22 +1,44 @@
 /* dobuan-movie/movie-subject/movie-subject.wxss */
-.images_large_box {
-  background-color: #F8F8FF;
-  padding: 36rpx 0;
+@import "/templates/template.wxss";
+.header {
+  width: 100%;
+  height: 400rpx;
+  position: relative;
+}
+.header::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #000;
+  opacity: 0.6;
+}
+.header_text {
+  position: absolute;
+  left: 50rpx;
+  top:130rpx;
 }
 .images_large {
-  width: 300rpx;
-  height: 400rpx;
+  width: 200rpx;
+  height: 300rpx;
   margin: 0 auto;
   display: block;
+  float: left;
+}
+.text {
+  float: left;
+  color: #fff;
 }
 .subject_title {
   font-size: 36rpx;
-  color: #000;
+  
 }
 .subject_text {
   font-size: 20rpx;
-  color:#999;
   padding: 24rpx;
+  color:#999;
 }
 .subject_summary {
   font-size: 24rpx;

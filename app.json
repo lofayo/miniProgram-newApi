@@ -15,9 +15,9 @@
     "window":
     {
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#F8F8FF",
+        "navigationBarBackgroundColor": "#00CD00",
         "navigationBarTitleText": "一段有意思的小程序",
-        "navigationBarTextStyle": "black"
+        "navigationBarTextStyle": "white"
     },
     "tabBar":
     {

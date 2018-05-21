@@ -8,10 +8,13 @@
       <block wx:for='{{rating.star}}' wx:for-item='star_item' wx:key='index'>
         <image class='star' src="{{star_item === 1 ? '/images/icon/star.png' : '/images/icon/none-star.png'}}"></image>
       </block>
+
       <text style='padding-left:24rpx;'>{{rating.average}}</text>
     </view>
   </view>
 </template>
+
+
 
 <!--电影分类列表的电影分类项模板  -->
 <template name="movie_category_template">

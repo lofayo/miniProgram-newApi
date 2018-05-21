@@ -14,7 +14,8 @@
 }
 
 .more {
-  color: blue;
+  color: #00CD00;
+  font-weight: bold;
 }
 .movie_surface {
   width: 100%;
@@ -45,7 +46,7 @@
 
 /*搜索框模板的样式  */
 .search_box {
-   background-color: #F8F8FF; 
+   background-color: #00CD00; 
    padding: 12rpx;
 }
 .search_input {

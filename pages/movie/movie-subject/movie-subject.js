@@ -24,8 +24,14 @@ Page({
         'content-type': 'json' // 默认值
       },
       success:function(res){
+        let subject = res.data
+        console.log(subject)
+        addStarArray(subject)
+        wx.setNavigationBarTitle({
+          title: subject.title
+        })
         _this.setData({
-          subject:res.data
+          subject: subject
         })
       }
     })
