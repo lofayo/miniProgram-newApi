@@ -131,7 +131,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    // wx.showShareMenu({
+    //   withShareTicket:true
+    // })
+    // wx.hideShareMenu()
+    // wx.showShareMenu()
   },
 
   /**
@@ -179,8 +183,19 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log('转发来自页面按钮：',res.target)
+    }
+    if (res.from === 'menu') {
+      // 来自右上角转发菜单
+      console.log('转发来自右上角转发菜单')
+    }
+    return {
+      title: '电影小程序',
+      imageUrl:'http://pic29.photophoto.cn/20131204/0034034499213463_b.jpg'
+    }
   },
 
   /**

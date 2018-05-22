@@ -1,4 +1,7 @@
 <!--pages/article/article.wxml-->
+<button open-type='share'>
+<image src='/images/me.jpg'></image>
+分享</button>
 <swiper indicator-dots="{{indicatorDots}}"
   autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
   <block wx:for="{{articleLists}}" wx:key="postId">

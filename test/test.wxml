@@ -5,3 +5,8 @@
   <text>{{item.name}}</text>
   <text> {{item.sex}}</text>
 </view>
+
+<button bindtap='chooseImage'>选择图片</button>
+<block wx:for='{{imagePath}}'>
+  <image src='{{item}}'></image>
+</block>

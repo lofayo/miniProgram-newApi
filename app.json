@@ -1,41 +1,40 @@
 {
-    "pages": [
-        "pages/movie/movie/movie",
-        "pages/article/article/article",
-        "pages/welcome/welcome",
-        "test/test",
-        "pages/movie/movie-subject/movie-subject",
-        "pages/movie/movie-lists/movie-lists",
-        "pages/article/article-content/article-content",
-        "pages/index/index",
-        "pages/logs/logs",
-        "templates/template",
-        "pages/movie/movie-search/movie-search"
-    ],
-    "window":
-    {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#00CD00",
-        "navigationBarTitleText": "一段有意思的小程序",
-        "navigationBarTextStyle": "white"
-    },
-    "tabBar":
-    {
-        "color": "#ccc",
-        "selectedColor": "blue",
-        "list": [
-        {
-            "pagePath": "pages/article/article/article",
-            "text": "最新影评",
-            "iconPath": "/images/tab/yuedu.png",
-            "selectedIconPath": "/images/tab/yuedu_hl.png"
-        },
-        {
-            "pagePath": "pages/movie/movie/movie",
-            "text": "豆瓣电影",
-            "iconPath": "/images/tab/dianying.png",
-            "selectedIconPath": "/images/tab/dianying_hl.png"
-        }]
-    },
-    "degbug": false
+  "pages": [
+    "pages/article/article/article",
+    "pages/movie/movie/movie",
+    "test/test",
+    "pages/welcome/welcome",
+    "pages/movie/movie-subject/movie-subject",
+    "pages/movie/movie-lists/movie-lists",
+    "pages/article/article-content/article-content",
+    "pages/index/index",
+    "pages/logs/logs",
+    "templates/template",
+    "pages/movie/movie-search/movie-search"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#00CD00",
+    "navigationBarTitleText": "一段有意思的小程序",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#ccc",
+    "selectedColor": "blue",
+    "list": [
+      {
+        "pagePath": "pages/article/article/article",
+        "text": "最新影评",
+        "iconPath": "/images/tab/yuedu.png",
+        "selectedIconPath": "/images/tab/yuedu_hl.png"
+      },
+      {
+        "pagePath": "pages/movie/movie/movie",
+        "text": "豆瓣电影",
+        "iconPath": "/images/tab/dianying.png",
+        "selectedIconPath": "/images/tab/dianying_hl.png"
+      }
+    ]
+  },
+  "degbug": false
 }

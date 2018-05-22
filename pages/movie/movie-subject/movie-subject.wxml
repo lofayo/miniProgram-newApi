@@ -1,4 +1,5 @@
 <!--dobuan-movie/movie-subject/movie-subject.wxml-->
+<import src='/templates/template.wxml' />
 <view class='subject'>
   <view class='header' style='background:url("{{subject.images.large}}") no-repeat 0 0 / 100%'>
     <view class='header_text'>
@@ -9,47 +10,76 @@
           <text class='subject_title'>{{subject.rating.average}}</text>
           <view style='margin-left:20rpx;display:flex;flex-direction:column;align-items:center;'>
             <view>
-              <block wx:for='{{subject.rating.star}}' wx:for-item='star_item' wx:key='index'>
-                <image class='star' src="{{star_item === 1 ? '/images/icon/star.png' : '/images/icon/none-star.png'}}"></image>
+              <block wx:if='{{subject.rating !== undefined}}'>
+                <template is='star_template' data='{{...subject.rating}}' />
               </block>
             </view>
-
             <text class='subject_title' style='font-size:20rpx;color:#eee;'>{{subject.ratings_count}}人评价</text>
           </view>
-
         </view>
-
       </view>
     </view>
   </view>
   <view class='subject_text'>
-
-    <view>
-      <block wx:for='{{subject.countries}}' wx:key='index'>
-        <text>{{item}} / </text>
-      </block>
-
-      <text>{{subject.year}}</text>
-      <block wx:for='{{subject.genres}}' wx:key='index'>
-        <text> / {{item}}</text>
+    <view class='movie_info'>
+      <text class='movie_info_title'>影片详情：</text>
+      <view>
+        <block wx:for='{{subject.countries}}' wx:key='index'>
+          <text>{{item}} / </text>
+        </block>
+        <text>{{subject.year}}</text>
+        <block wx:for='{{subject.genres}}' wx:key='index'>
+          <text> / {{item}}</text>
+        </block>
+      </view>
+      <view>
+        <text>导演：</text>
+        <block wx:for='{{subject.directors}}' wx:key='index'>
+          <text> / {{item.name}}</text>
+        </block>
+      </view>
+      <view>
+        <text>主演：</text>
+        <block wx:for='{{subject.casts}}' wx:key='index'>
+          <text> / {{item.name}}</text>
+        </block>
+      </view>
+      <view>
+        <text>上映日期：</text>
+        <block wx:for='{{subject.pubdates}}' wx:key='index'>
+          <text> / {{item}}</text>
+        </block>
+      </view>
+      <view>
+        <text>片长：{{subject.durations}}</text>
+      </view>
+    </view>
+    <view class='movie_info' style='display:block;'>
+      <text class='movie_info_title'>主演图片：</text>
+      <scroll-view scroll-x='true' scroll-with-animation='true' style='width:100%;white-space:nowrap;height:400rpx;'>
+        <block wx:for='{{subject.casts}}' wx:for-item='cast_item'>
+          <image style='width:50%;' src='{{cast_item.avatars.small}}'></image>
+        </block>
+      </scroll-view>
+    </view>
+    <view class='movie_info'>
+      <text class='movie_info_title'>电影剧情：</text>
+      <view class='movie_summary'>{{subject.summary}}</view>
+    </view>
+    <view class='movie_info'>
+      <text class='movie_info_title'>热门评论：</text>
+      <block wx:for='{{subject.popular_comments}}' wx:for-item='comment_item'>
+        <view class='hot_comment_item'>
+          <view class='comment_info'>
+            <image class='author_image' src='{{comment_item.author.avatar}}'></image>
+            <text>{{comment_item.author.name}}</text>
+            <text>{{comment_item.created_at}}</text>
+          </view>
+          <view class='comment_content'>
+            {{comment_item.content}}
+          </view>
+        </view>
       </block>
     </view>
-    <view>
-      <text>导演：</text>
-      <block wx:for='{{subject.directors}}' wx:key='index'>
-        <text> / {{item.name}}</text>
-      </block>
-    </view>
-    <view>
-      <text>主演：</text>
-      <block wx:for='{{subject.casts}}' wx:key='index'>
-        <text> / {{item.name}}</text>
-      </block>
-    </view>
-    <view>
-      <text>影评数量：{{subject.reviews_count}}</text>
-      <text>想看数量：{{subject.wish_count}}</text>
-    </view>
-    <text class='subject_summary'>{{subject.summary}}</text>
   </view>
 </view>

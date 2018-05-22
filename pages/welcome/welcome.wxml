@@ -1,6 +1,6 @@
 <!--pages/welcome/welcome.wxml-->
 <view class='welcome_box'>
   <view class='me_logo'></view>
-  <text>hello lofayo</text>
+  <text>hello</text>
   <button bindtap="toArticleLists">开启小程序之旅</button>
 </view>

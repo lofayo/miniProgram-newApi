@@ -5,15 +5,18 @@
     <image src='{{images.large}}' class='movie_surface'></image>
     <text class='movie_title'>{{title}}</text>
     <view class='comment'>
-      <block wx:for='{{rating.star}}' wx:for-item='star_item' wx:key='index'>
-        <image class='star' src="{{star_item === 1 ? '/images/icon/star.png' : '/images/icon/none-star.png'}}"></image>
-      </block>
-
+      <template is='star_template' data='{{...rating}}' />
       <text style='padding-left:24rpx;'>{{rating.average}}</text>
     </view>
   </view>
 </template>
 
+<!--星级组件  -->
+<template name='star_template'>
+  <block wx:for='{{star}}' wx:for-item='star_item' wx:key='index'>
+    <image class='star' src="{{star_item === 1 ? '/images/icon/star.png' : '/images/icon/none-star.png'}}"></image>
+  </block>
+</template>
 
 
 <!--电影分类列表的电影分类项模板  -->
