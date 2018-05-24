@@ -1,6 +1,7 @@
 const movie = require('../common.js')
 const api = movie.api
 const addStarArray = movie.addStarArray
+
 /**
  * 请求Api的回调，对请求数据的处理
  * @method handleData
@@ -20,6 +21,8 @@ function handleData(url_id, categroy, subjects, _this) {
   tempArray.push(tempJson)
   _this.setData({
     moviesData: tempArray
+  },()=>{
+    wx.hideLoading()
   })
 }
 /**
@@ -38,8 +41,15 @@ function requestCategoryApi(url, url_id, category, _this) {
       'content-type': 'json'
     },
     success: function (res) {
-      handleData(url_id, category, res.data.subjects, _this)
+      console.log(res)
+      if (res.statusCode === 200) {
+        handleData(url_id, category, res.data.subjects, _this)
+      }
+    },
+    fail: function (res) {
+      console.log(1,res)
     }
+
   })
 }
 Page({
@@ -50,19 +60,20 @@ Page({
   data: {
     moviesData: []
   },
-  onTabItemTap: function (item) {
-    console.log(item.index)
-    console.log(item.pagePath)
-    console.log(item.text)
+  requestUrl:function(){
+    wx.showLoading({
+      title: 'loading',
+    })
+    for (let i = 0; i < 3; i++) {
+      let url = api[i].url + '?start=0&count=3'
+      requestCategoryApi(url, i, api[i].category, this)
+    }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    for (let i = 0; i < 3; i++) {
-      let url = api[i].url + '?start=0&count=3'
-      requestCategoryApi(url, i, api[i].category, this)
-    }
+    this.requestUrl()
   },
 
   /**

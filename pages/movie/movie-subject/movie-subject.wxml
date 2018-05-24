@@ -57,7 +57,7 @@
     <view class='movie_info' style='display:block;'>
       <text class='movie_info_title'>主演图片：</text>
       <scroll-view scroll-x='true' scroll-with-animation='true' style='width:100%;white-space:nowrap;height:400rpx;'>
-        <block wx:for='{{subject.casts}}' wx:for-item='cast_item'>
+        <block wx:for='{{subject.casts}}' wx:key='index' wx:for-item='cast_item'>
           <image style='width:50%;' src='{{cast_item.avatars.small}}'></image>
         </block>
       </scroll-view>
@@ -68,7 +68,7 @@
     </view>
     <view class='movie_info'>
       <text class='movie_info_title'>热门评论：</text>
-      <block wx:for='{{subject.popular_comments}}' wx:for-item='comment_item'>
+      <block wx:for='{{subject.popular_comments}}' wx:key='index' wx:for-item='comment_item'>
         <view class='hot_comment_item'>
           <view class='comment_info'>
             <image class='author_image' src='{{comment_item.author.avatar}}'></image>

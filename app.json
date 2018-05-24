@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/welcome/welcome",
     "test/test",
-    "pages/article/article/article",
     "pages/movie/movie/movie",
+    "pages/welcome/welcome",
+    "pages/article/article/article",
     "pages/movie/movie-subject/movie-subject",
     "pages/movie/movie-lists/movie-lists",
     "pages/article/article-content/article-content",
@@ -17,8 +17,7 @@
     "navigationBarBackgroundColor": "#00CD00",
     "navigationBarTitleText": "一段有意思的小程序",
     "navigationBarTextStyle": "white",
-    "backgroundColor":"#cccccc",
-    "enablePullDownRefresh": true
+    "backgroundColor":"#cccccc"
   },
   "tabBar": {
     "color": "#ccc",

@@ -1,5 +1,5 @@
 <!--test/test.wxml-->
-<!-- <web-view src="http://www.pospi.com/html/home-page.html"></web-view> -->
+ <!-- <web-view src="http://www.pospi.com/html/home-page.html"></web-view>  -->
 <!-- <web-view src="http://new.pospi.com/app/index.php?i=8&c=entry&do=index&m=yhh_video"></web-view> -->
 <text>{{data}}</text>
 <view wx:for='{{info}}'>

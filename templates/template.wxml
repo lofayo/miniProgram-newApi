@@ -26,9 +26,12 @@
       <text class='category_title'>{{name}}</text>
       <text bindtap='toMovieLists' data-url_id='{{url_id}}' data-category_name='{{name}}' class='more'>更多 ></text>
     </view>
-    <block wx:for='{{subjects}}' wx:for-item='movie_item' wx:key='index'>
-      <template is="movie_item_template" data="{{...movie_item}}" />
-    </block>
+    <view class='movie_item_box'>
+      <block wx:for='{{subjects}}' wx:for-item='movie_item' wx:key='index'>
+        <template is="movie_item_template" data="{{...movie_item}}" />
+      </block>
+    </view>
+
   </view>
 </template>
 

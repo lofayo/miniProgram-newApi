@@ -1,7 +1,9 @@
 // pages/movie/movie-lists/movie-lists.js
 const movie = require('../common.js')
 const api = movie.api
-const addStarArray = movie.addStarArray
+
+const util = require('../../../utils/util.js')
+const requestUrl = util.requestUrl
 
 // 全局变量记录下拉刷新时数据初始值
 let requestStart = 0
@@ -17,32 +19,51 @@ Page({
     let _this = this
     let initSubjects = _this.data.subjects
 
-    let currentQueryUrl = url + '?start=' + requestStart
+    let currentQueryUrl = url + '?count=18&start=' + requestStart
+    console.log(currentQueryUrl)
     requestStart += 20
+    wx.showLoading({
+      title: 'loading',
+      mask: true
+    })    
     wx.request({
       url: currentQueryUrl,
       header: {
         'content-type': 'json' // 默认值
       },
       success: function (res) {
-        if (res.data.count === 0) {
-          wx.showToast({
-            title: '已全部更新',
-          })
-        } else {
-          wx.showLoading({
-            title: 'loading',
-            mask: true
-          })
-          let subjects = res.data.subjects
-          addStarArray(subjects)
-          _this.setData({
-            subjects: [...subjects, ...initSubjects]
-          }, () => {
+        console.log(res)
+
+        if (res.statusCode === 200) {
+          if (res.data.subjects.length === 0) {
             wx.hideLoading()
-            wx.stopPullDownRefresh()
+            wx.showToast({
+              title: '已全部更新',
+            })
+          } else {
+            let subjects = res.data.subjects
+            addStarArray(subjects)
+            _this.setData({
+              subjects: [...subjects, ...initSubjects]
+            }, () => {
+              wx.hideLoading()
+              wx.stopPullDownRefresh()
+            })
+          }
+        } else {
+          wx.hideLoading()
+          wx.showToast({
+            title: '请求url错误',
           })
         }
+      },
+      // 因为网络原因请求失败
+      fail:function(){
+        wx.hideLoading()
+        wx.showToast({
+          title: '请检查网络设置',
+
+        })
       }
     })
   },
@@ -59,13 +80,9 @@ Page({
    */
   onLoad: function (options) {
     let url_id = options.url_id
-    url = api[url_id].url
+    url = api[url_id].url +'?count=18'
 
-    let category_name = options.category_name
-    wx.setNavigationBarTitle({
-      title: category_name
-    })
-    this.requestItemApi(url)
+    requestUrl(url,'subjects',this)
   },
 
   /**

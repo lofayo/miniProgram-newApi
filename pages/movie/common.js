@@ -11,7 +11,7 @@ let new_movies = domain + 'v2/movie/new_movies'
 
 let movie_subject_api = domain + 'v2/movie/subject/'
 
-let movie_search_api = domain + 'v2/movie/search?q='
+let movie_search_api = domain + 'v2/movie/search?count=18&q='
 
 const api = [{
     category_en: 'in_theaters',
@@ -76,7 +76,6 @@ function addStarArray(subjects) {
     let stars = subjects.rating.stars
     subjects.rating['star'] = starArray[Math.round(stars / 10)]
   }
-    
 }
 
 

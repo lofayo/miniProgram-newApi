@@ -190,7 +190,16 @@
 	  
 	  
 	  
-	  
+	 20、加载loading
+	 
+		1、调用请求函数，执行wx.request就显示loading， wx.showLoading()
+		2、
+			http请求成功了，状态码200，拿到了数据渲染完成，隐藏loading，wx.hideLoading()
+			
+			http请求成功了，状态码其它，没有拿到数据，同样隐藏loading
+			
+			
+		3、因为网络请求失败了，同样隐藏loading，wx.hideLoading()
 	  
 	  
 	  

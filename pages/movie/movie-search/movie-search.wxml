@@ -6,9 +6,12 @@
 </view>
 <view class='movie_container'>
   <block wx:if='{{searchData.length != 0}}'>
-    <block wx:for='{{searchData}}' wx:key='index'>
-      <template is='movie_item_template' data='{{...item}}' />
-    </block>
+    <view class='movie_item_box'>
+
+      <block wx:for='{{searchData}}' wx:key='index'>
+        <template is='movie_item_template' data='{{...item}}' />
+      </block>
+    </view>
   </block>
 
 </view>

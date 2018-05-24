@@ -11,7 +11,11 @@
   </view>
   <text class='title'>{{currentArticle.title}}</text>
   <view class='col_share'>
-    <image src='/images/icon/share.png'></image>
+    <label>
+      <image src='/images/icon/share.png'></image>
+      <button open-type='share'></button>
+    </label>
+
     <image bindtap='collect' style='margin-right:36rpx;' src="{{!isCurrentCollected ? '/images/icon/collection-anti.png' : '/images/icon/collection.png'}}"></image>
     <text class='line'></text>
   </view>

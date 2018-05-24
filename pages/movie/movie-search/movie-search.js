@@ -1,7 +1,11 @@
 // pages/movie/movie-search/movie-search.js
 const movie = require('../common.js')
 const movie_search_api = movie.movie_search_api
-const addStarArray = movie.addStarArray
+
+const util = require('../../../utils/util.js')
+const requestUrl = util.requestUrl
+
+
 Page({
 
   /**
@@ -71,26 +75,9 @@ Page({
    * 显示搜索结果
    */
   searching: function (e) {
-    let _this = this
     let searchKey = e.detail.value
-    wx.showLoading({
-      title: 'loading',
-    })
-    wx.request({
-      url: movie_search_api + searchKey,
-      header: {
-        'content-type': 'json'
-      },
-      success: function (res) {
-        let subjects = res.data.subjects
-        addStarArray(subjects)
-        _this.setData({
-          searchData: subjects
-        }, () => {
-          wx.hideLoading()
-        })
-      }
-    })
+    let url = movie_search_api + searchKey
+    requestUrl(url,'searchData',this)
   },
 
   /**
