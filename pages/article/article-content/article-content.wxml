@@ -1,7 +1,7 @@
 <!--pages/article-content/article-content.wxml-->
 <view class='header'>
-  <image class='header_img' src='{{isPlayMusic ? currentArticle.music.coverImg : currentArticle.headImgSrc}}'></image>
-  <image bindtap='playMusic' class='music_icon' src="{{isPlayMusic?'/images/music/music-stop.png':'/images/music/music-start.png'}}"></image>
+  <image class='header_img' src='{{isMusicPlay ? currentArticle.music.coverImg : currentArticle.headImgSrc}}'></image>
+  <image bindtap='playMusic' class='music_icon' src="{{isMusicPlay?'/images/music/music-stop.png':'/images/music/music-start.png'}}"></image>
 </view>
 <view class='article_content_info'>
   <view class='article_release'>

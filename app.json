@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/welcome/welcome",
+    "test/test",
     "pages/article/article/article",
     "pages/movie/movie/movie",
-    "test/test",
-    "pages/welcome/welcome",
     "pages/movie/movie-subject/movie-subject",
     "pages/movie/movie-lists/movie-lists",
     "pages/article/article-content/article-content",
@@ -16,7 +16,9 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00CD00",
     "navigationBarTitleText": "一段有意思的小程序",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "backgroundColor":"#cccccc",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#ccc",
@@ -36,5 +38,5 @@
       }
     ]
   },
-  "degbug": false
+  "debug": false
 }

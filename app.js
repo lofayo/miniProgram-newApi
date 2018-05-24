@@ -48,12 +48,10 @@ App({
         }
       }
     })
-
-
   },
   globalData: {
     // 对于整个APP注册一个音乐播放器
-    innerAudioContext: wx.createInnerAudioContext(),
-    musicPlayerPlay: false
+    backgroundAudioManager: wx.getBackgroundAudioManager(),
+    isMusicPlay: false
   }
 })

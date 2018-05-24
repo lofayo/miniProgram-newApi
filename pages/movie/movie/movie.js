@@ -59,23 +59,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.chooseAddress({
-      success: function (res) {
-        console.log(res.userName)
-        console.log(res.postalCode)
-        console.log(res.provinceName)
-        console.log(res.cityName)
-        console.log(res.countyName)
-        console.log(res.detailInfo)
-        console.log(res.nationalCode)
-        console.log(res.telNumber)
-      }
-    })
-    wx.setTabBarBadge({
-      index: 0,
-      text: '1'
-    })
-
     for (let i = 0; i < 3; i++) {
       let url = api[i].url + '?start=0&count=3'
       requestCategoryApi(url, i, api[i].category, this)
