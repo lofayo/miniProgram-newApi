@@ -176,10 +176,10 @@
 
 	 * @return {返回值类型} 返回值说明
 
-	 */
+	 **/
 	  
 	
-	19、背景音乐播放逻辑：
+	19、19、背景音乐播放逻辑：
 		1、当前页面点击按钮的两种情况：
 			- 暂停——》播放
 			- 播放——》暂停
@@ -187,6 +187,41 @@
 		2、当前页面退出了，全局的背景音乐还在播放，就必须用播放的状态渲染按钮
 		
 		3、从一个播放页面进入另一个页面点击播放音乐
+	  
+		整个播放流程：
+					1、先定义一个全局播放器————》
+					2、点击按钮初次播放（直接设置src既可）————》
+					3、当前页面暂停播放的切换————》
+					4、退出当前页面，再次进入，要渲染播放状态————》
+					5、退出当前页面，在其它页面点击播放另一首音乐
+					
+					（2、5）可以合并为一个判断
+
+							// 点击按钮初次播放，直接设置src既可播放（2、5）
+							if (backgroundAudioManager.src !== this.data.currentArticle.music.url) {
+							  backgroundAudioManager.title = this.data.currentArticle.music.title
+							  backgroundAudioManager.coverImgUrl = this.data.currentArticle.music.coverImg
+							  backgroundAudioManager.src = this.data.currentArticle.music.url
+							} else {
+							  // 当前页面暂停与播放的切换（3）
+							  if (backgroundAudioManager.paused) {
+								backgroundAudioManager.play()
+							  } else {
+								backgroundAudioManager.pause()
+							  }
+							}
+							// 暂停与播放状态的改变，设置视图层渲染的数据（为了避免点击因为网络延迟未播放，却及时的切换按钮状态）
+							backgroundAudioManager.onPlay(() => {
+							  this.setData({
+								isMusicPlay: true
+							  })
+							})
+							backgroundAudioManager.onPause(() => {
+							  this.setData({
+								isMusicPlay: false
+							  })
+							})
+
 	  
 	  
 	  

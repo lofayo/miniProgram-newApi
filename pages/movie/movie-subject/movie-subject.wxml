@@ -54,29 +54,44 @@
         <text>片长：{{subject.durations}}</text>
       </view>
     </view>
+
     <view class='movie_info' style='display:block;'>
       <text class='movie_info_title'>主演图片：</text>
-      <scroll-view scroll-x='true' scroll-with-animation='true' style='width:100%;white-space:nowrap;height:400rpx;'>
-        <block wx:for='{{subject.casts}}' wx:key='index' wx:for-item='cast_item'>
-          <image style='width:50%;' src='{{cast_item.avatars.small}}'></image>
+      <scroll-view scroll-x='true'>
+        <view class='scroll_view'>
+          <block wx:for='{{subject.casts}}' wx:key='index' wx:for-item='cast_item'>
+            <view class='cast_info' bindtap='toCastPhotos' data-cast_id='{{cast_item.id}}'>
+              <image style='width: 100%;' src='{{cast_item.avatars.small}}'></image>
+              <text style='margin-top:36rpx;'>{{cast_item.name}}({{cast_item.name_en}})</text>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+    <view class='movie_info' style='display:block;'>
+      <text class='movie_info_title'>电影剧照：</text>
+      <scroll-view scroll-x='true' scroll-with-animation='true' style='width:100%;white-space:nowrap;height:300rpx;'>
+        <block wx:for='{{subject.photos}}' wx:key='index' wx:for-item='photo_item'>
+          <image bindtap='previewPhoto' data-src='{{photo_item.image}}' style='width:50%;' src='{{photo_item.image}}'></image>
         </block>
       </scroll-view>
+      <text data-subject_id='{{subject.id}}' bindtap='toMorePhotos'>更多剧照>></text>
     </view>
     <view class='movie_info'>
       <text class='movie_info_title'>电影剧情：</text>
       <view class='movie_summary'>{{subject.summary}}</view>
     </view>
     <view class='movie_info'>
-      <text class='movie_info_title'>热门评论：</text>
-      <block wx:for='{{subject.popular_comments}}' wx:key='index' wx:for-item='comment_item'>
-        <view class='hot_comment_item'>
-          <view class='comment_info'>
-            <image class='author_image' src='{{comment_item.author.avatar}}'></image>
-            <text>{{comment_item.author.name}}</text>
-            <text>{{comment_item.created_at}}</text>
+      <text class='movie_info_title'>影评：</text>
+      <block wx:for='{{subject.popular_reviews}}' wx:key='index' wx:for-item='review_item'>
+        <view class='hot_review_item'>
+          <view class='review_info'>
+            <image class='author_image' src='{{review_item.author.avatar}}'></image>
+            <text style='margin-left:36rpx;'>{{review_item.author.name}}</text>
           </view>
-          <view class='comment_content'>
-            {{comment_item.content}}
+          <view class='review_content'>
+            <view>{{review_item.title}}</view>
+            <view>{{review_item.summary}}</view>
           </view>
         </view>
       </block>

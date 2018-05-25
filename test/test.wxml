@@ -1,6 +1,8 @@
 <!--test/test.wxml-->
- <!-- <web-view src="http://www.pospi.com/html/home-page.html"></web-view>  -->
-<!-- <web-view src="http://new.pospi.com/app/index.php?i=8&c=entry&do=index&m=yhh_video"></web-view> -->
+  <!-- <web-view src="https://vt1.doubanio.com/201805241859/8a0e6d64dbfbd56be469d0f6d1a320d8/view/movie/M/302310020.mp4"></web-view>   -->
+ <!-- <web-view src="http://new.pospi.com/app/index.php?i=8&c=entry&do=index&m=yhh_video"></web-view>  -->
+ <!-- <video src='https://vt1.doubanio.com/201805241859/8a0e6d64dbfbd56be469d0f6d1a320d8/view/movie/M/302310020.mp4'></video>  -->
+ <!-- <live-player src="https://vt1.doubanio.com/201805241859/8a0e6d64dbfbd56be469d0f6d1a320d8/view/movie/M/302310020.mp4" mode="RTC" autoplay style="width: 300px; height: 225px;" /> -->
 <text>{{data}}</text>
 <view wx:for='{{info}}'>
   <text>{{item.name}}</text>

@@ -55,13 +55,13 @@ text {
   color:black;
   font-weight: 700;
 }
-.comment_info {
+.review_info {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
-.comment_content {
+.review_content {
   text-indent: 2em;
   margin-top: 24rpx;
 }
@@ -70,7 +70,22 @@ text {
   height: 80rpx;
   border-radius: 50%;
 }
-.hot_comment_item {
+.hot_review_item {
   border-bottom: 1px dotted #ccc;
   padding: 20rpx;
+}
+.scroll_view {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  height: 400rpx;
+}
+.cast_info {
+  flex:none;
+  width: 40%;
+  margin:0 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

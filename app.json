@@ -1,7 +1,8 @@
 {
   "pages": [
-    "test/test",
     "pages/movie/movie/movie",
+    "pages/movie/movie_morePhoto/movie_morePhoto",
+    "test/test",
     "pages/welcome/welcome",
     "pages/article/article/article",
     "pages/movie/movie-subject/movie-subject",
@@ -10,14 +11,15 @@
     "pages/index/index",
     "pages/logs/logs",
     "templates/template",
-    "pages/movie/movie-search/movie-search"
+    "pages/movie/movie-search/movie-search",
+    "pages/movie/movie_castPhoto/movie_castPhoto"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00CD00",
     "navigationBarTitleText": "一段有意思的小程序",
     "navigationBarTextStyle": "white",
-    "backgroundColor":"#cccccc"
+    "backgroundColor": "#cccccc"
   },
   "tabBar": {
     "color": "#ccc",

@@ -13,6 +13,8 @@ let movie_subject_api = domain + 'v2/movie/subject/'
 
 let movie_search_api = domain + 'v2/movie/search?count=18&q='
 
+let movie_celebrity_api = domain + 'v2/movie/celebrity/'
+
 const api = [{
     category_en: 'in_theaters',
     category: '正在热映',
@@ -78,10 +80,48 @@ function addStarArray(subjects) {
   }
 }
 
+/**
+ * 封装请求接口的方法（因为每次请求的数据不一样，以及对数据的处理也不一样，特传入数据处理函数）
+ * url 接口地址 string
+ * handleDataCallback 处理请求数据的函数 function
+ */
+const requestUrl = (url, handleDataCallback) => {
+  wx.showLoading({
+    title: 'loading',
+  })
+  wx.request({
+    // @1
+    url: url,
+    header: {
+      'content-type': 'json' // 默认值
+    },
+    success: function (res) {
+      console.log(res)
+      if (res.statusCode === 200) {
+        handleDataCallback(res.data)
+      } else {
+        wx.hideLoading()
+        wx.showToast({
+          title: '请求URL错误',
+        })
+      }
+    },
+    // 因为网络原因请求失败
+    fail: function () {
+      wx.hideLoading()
+      wx.showToast({
+        title: '请检查网络设置',
+
+      })
+    }
+  })
+}
 
 module.exports = {
     api: api,
     movie_subject_api: movie_subject_api,
     movie_search_api: movie_search_api,
-    addStarArray: addStarArray
+    movie_celebrity_api: movie_celebrity_api,
+    addStarArray: addStarArray,
+    requestUrl: requestUrl
 }

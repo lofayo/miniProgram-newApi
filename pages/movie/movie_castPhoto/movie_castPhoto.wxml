@@ -1,0 +1,7 @@
+<!--pages/movie/movie_castPhoto/movie_castPhoto.wxml-->
+<block wx:for='{{photos}}' wx:for-item='photo'>
+  <view class='photo_item'>
+    <image mode='widthFix' bindtap='previewPhoto' data-src='{{photo.image}}' class='photo_item_img' src='{{photo.image}}'></image>
+    <text>图片制作于：{{photo.created_at}}</text>
+  </view>
+</block>

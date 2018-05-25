@@ -1,9 +1,10 @@
-// dobuan-movie/movie-subject/movie-subject.js
+// pages/movie/movie_morePhoto/movie_morePhoto.js
 const movie = require('../common.js')
 const movie_subject_api = movie.movie_subject_api
+let url = ''
+let start = 0
 
-const util = require('../../../utils/util.js')
-const requestUrl = util.requestUrl
+
 
 Page({
 
@@ -11,18 +12,32 @@ Page({
    * 页面的初始数据
    */
   data: {
-    subject:{}
+    photos:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let _this = this
     let subject_id = options.subject_id
-    let url = movie_subject_api + subject_id
-    console.log(url)
-    requestUrl(url,'subject',this)
+    url = movie_subject_api + subject_id + '/photos?count=100'
+    let _this = this
+
+    // let url = 'https://douban.uieee.com/v2/movie/celebrity/1275756/photos'
+    wx.request({
+      url: url,
+      header:{
+        "content-type":"json"
+      },
+      success:function(res){
+        console.log(res)
+        _this.setData({
+          photos:res.data.photos
+        },()=>{
+          start += 20
+        })
+      }
+    })
   },
 
   /**
@@ -57,7 +72,32 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-  
+    let _this = this
+    let queryUrl = url + '?start=' + start
+    console.log(queryUrl)
+    wx.request({
+      url: queryUrl,
+      header: {
+        "content-type": "json"
+      },
+      success: function (res) {
+        console.log(res)
+        if (res.data.photos.length !== 0) {
+          _this.setData({
+            photos: [...res.data.photos, ..._this.data.photos]
+          }, () => {
+            start += 10
+            wx.stopPullDownRefresh()
+          })
+        } else {
+          wx.showToast({
+            title: '数据已全部更新了',
+          })
+        }
+        wx.stopPullDownRefresh()
+      }
+    })
+
   },
 
   /**
@@ -81,35 +121,13 @@ Page({
     console.log(e)
     let currentPhotoUrl = e.currentTarget.dataset.src
     let allPhotoUrl = []
-    let photos = this.data.subject.photos
+    let photos = this.data.photos
     for (let photo of photos) {
       allPhotoUrl.push(photo.image)
     }
     wx.previewImage({
       current: currentPhotoUrl,
       urls: allPhotoUrl
-    })
-  },
-
-  /**
-   * 进入进入更多剧照页面
-   */
-  toMorePhotos: function (e) {
-    // console.log(e)
-    let subject_id = e.currentTarget.dataset.subject_id
-    wx.navigateTo({
-      url: '/pages/movie/movie_morePhoto/movie_morePhoto?subject_id=' + subject_id,
-    })
-  },
-
-  /**
-   * 进入演员照片页面
-   */
-  toCastPhotos: function (e) {
-    // console.log(e)
-    let cast_id = e.currentTarget.dataset.cast_id
-    wx.navigateTo({
-      url: '/pages/movie/movie_castPhoto/movie_castPhoto?cast_id=' + cast_id,
     })
   }
 })
