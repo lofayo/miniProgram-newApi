@@ -1,8 +1,9 @@
 // pages/movie/movie_morePhoto/movie_morePhoto.js
 const movie = require('../common.js')
 const movie_subject_api = movie.movie_subject_api
+const requestUrl = movie.requestUrl
 let url = ''
-let start = 0
+let pullDownRefreshStart = 4
 
 
 
@@ -24,87 +25,51 @@ Page({
     let _this = this
 
     // let url = 'https://douban.uieee.com/v2/movie/celebrity/1275756/photos'
-    wx.request({
-      url: url,
-      header:{
-        "content-type":"json"
-      },
-      success:function(res){
-        console.log(res)
-        _this.setData({
-          photos:res.data.photos
-        },()=>{
-          start += 20
-        })
-      }
+    // url = 'https://douban.uieee.com/v2/movie/subject/25900947/photos?count=4'
+    requestUrl(url, (resData) => {
+      let photos = resData.photos
+      wx.setNavigationBarTitle({
+        title: photos[0].album_title
+      })
+      _this.setData({
+        photos: photos
+      }, () => {
+        wx.hideLoading()
+      })
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    let _this = this
-    let queryUrl = url + '?start=' + start
-    console.log(queryUrl)
-    wx.request({
-      url: queryUrl,
-      header: {
-        "content-type": "json"
-      },
-      success: function (res) {
-        console.log(res)
-        if (res.data.photos.length !== 0) {
-          _this.setData({
-            photos: [...res.data.photos, ..._this.data.photos]
-          }, () => {
-            start += 10
-            wx.stopPullDownRefresh()
-          })
-        } else {
-          wx.showToast({
-            title: '数据已全部更新了',
-          })
-        }
-        wx.stopPullDownRefresh()
-      }
-    })
-
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    // 因为电影剧照的接口count与start设置，和以前不一样，所以目前不处理
+    // let _this = this
+    // let queryUrl = url + '&start=' + pullDownRefreshStart
+    // console.log(queryUrl)
+    // requestUrl(queryUrl, (resData) => {
+    //   if (resData.photos.length !== 0) {
+    //     _this.setData({
+    //       photos: [..._this.data.photos, ...resData.photos]
+    //     }, () => {
+    //       pullDownRefreshStart += 4
+    //       wx.hideLoading()
+    //       wx.stopPullDownRefresh()
+    //     })
+    //   } else {
+    //     wx.hideLoading()
+    //     wx.stopPullDownRefresh()
+    //     wx.showToast({
+    //       title: '数据已全部更新了',
+    //     })
+    //   }
+    // })
   },
 
   /**

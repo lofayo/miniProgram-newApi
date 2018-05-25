@@ -3,6 +3,9 @@ const data = require('../data.js')
 let app = getApp()
 let backgroundAudioManager = app.globalData.backgroundAudioManager
 
+const utils = require('../../../utils/util.js')
+const storage = utils.storage
+
 Page({
   /**
    * 页面的初始数据
@@ -19,9 +22,13 @@ Page({
    */
   onLoad: function (options) {
     var _this = this
+    //1、页面加载，初始本地数据存储（虽然可以放在点击收藏按钮再执行，但两个异步处理放在一起处理就出问题了）
+    storage.initStorage('collectRecord', {})
+
 
     // 获取传递到当前页面的查询参数，并取到对应的文章项
     var articleID = options.articleID;
+    console.log(articleID)
     this.setData({
       currentArticle: data.data[articleID]
     }, () => {
@@ -31,79 +38,20 @@ Page({
         })
       }
     })
-    console.log(this.data.currentArticle.music.url)
-    // 页面加载了，或初始化storage，或获取storage渲染初始状态
-    var key = 'collection_article_' + this.data.currentArticle.postId
-    wx.getStorage({
-      key: 'collectRecord',
-      success: function (res) {
-        var collectRecord = res.data
-        // 2、如果当前页面被设置过收藏，则渲染收藏结果
-        if (collectRecord[key] !== undefined) {
-          // console.log(collectRecord[key])
-          _this.setData({
-            isCurrentCollected: collectRecord[key]
-          })
-        }
-      },
-      // 1、失败了意味没有此本地记录，就初始化
-      fail: function () {
-        wx.setStorage({
-          key: 'collectRecord',
-          data: {}
+
+
+    //2、用收藏的结果渲染页面
+    storage.getStorage('collectRecord', (resData) => {
+      console.log(resData)
+      let key = 'collection_article_' + _this.data.currentArticle.postId
+      // 新进入一个文章页，根本没设置过该页面的收藏
+      if (resData[key] !== undefined) {
+        _this.setData({
+          isCurrentCollected: resData[key]
         })
       }
     })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-    console.log('hide')
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
   /**
    * 播放音乐的
    */
@@ -144,21 +92,16 @@ Page({
    * 点击收藏，切换收藏与取消，并修改storage中对应那条数据
    */
   collect: function () {
-    var key = 'collection_article_' + this.data.currentArticle.postId
+    let _this = this
+    //1、 这是表象看到收藏与取消
     this.setData({
       isCurrentCollected: !this.data.isCurrentCollected
     })
-    var _this = this
-    wx.getStorage({
-      key: 'collectRecord',
-      success: function (res) {
-        var collectRecord = res.data
-        collectRecord[key] = _this.data.isCurrentCollected
-        wx.setStorage({
-          key: 'collectRecord',
-          data: collectRecord
-        })
-      }
-    })
+
+    // 2、这是背后记录收藏结果
+    var key = 'collection_article_' + this.data.currentArticle.postId
+    let collectValue = {}
+    collectValue[key] = this.data.isCurrentCollected
+    storage.setStorage('collectRecord',collectValue)
   }
 })

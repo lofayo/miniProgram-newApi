@@ -1,128 +1,42 @@
 const movie = require('../common.js')
 const api = movie.api
+const requestUrl = movie.requestUrl
 const addStarArray = movie.addStarArray
 
-/**
- * 请求Api的回调，对请求数据的处理
- * @method handleData
- * @param {string} category 设置请求数据的类型
- * @param {array} subjects 请求结果的数组对象
- * @param {this} 当前页面this对象 当前页面this对象
- * @return {undefined} 
- * eg:handleData('in_theaters', [], _this)
- */
-let tempArray = []
-function handleData(url_id, categroy, subjects, _this) {
-  addStarArray(subjects)
-  let tempJson = {}
-  tempJson['name'] = categroy
-  tempJson['url_id'] = url_id
-  tempJson['subjects'] = subjects
-  tempArray.push(tempJson)
-  _this.setData({
-    moviesData: tempArray
-  },()=>{
-    wx.hideLoading()
-  })
-}
-/**
- * 请求分类数据的url
- * @method requestCategoryApi
- * @param {string} url 请求url
- * @param {string} category 请求数据类型，用于设置请求数据类型
- * @param {this} 当前页面this对象 当前页面this对象
- * @return {undefined} 
- * eg:requestCategoryApi('https://douban.uieee.com/v2/movie/in_theaters', 'in_theaters',this)
- */
-function requestCategoryApi(url, url_id, category, _this) {
-  wx.request({
-    url: url,
-    header: {
-      'content-type': 'json'
-    },
-    success: function (res) {
-      console.log(res)
-      if (res.statusCode === 200) {
-        handleData(url_id, category, res.data.subjects, _this)
-      }
-    },
-    fail: function (res) {
-      console.log(1,res)
-    }
-
-  })
-}
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    moviesData: []
-  },
-  requestUrl:function(){
-    wx.showLoading({
-      title: 'loading',
-    })
-    for (let i = 0; i < 3; i++) {
-      let url = api[i].url + '?start=0&count=3'
-      requestCategoryApi(url, i, api[i].category, this)
-    }
+    moviesCategory: []
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.requestUrl()
+    let _this = this
+
+    let tempArray = []
+    for (let i = 0; i < 3; i++) {
+      let url = api[i].url + '?start=0&count=3'
+      requestUrl(url,(resData)=>{ 
+        console.log(resData)
+        let subjects = resData.subjects
+        addStarArray(subjects)
+        let tempJson = {}
+        tempJson['name'] = api[i].category
+        tempJson['url_id'] = i
+        tempJson['subjects'] = subjects
+        tempArray.push(tempJson)
+        _this.setData({
+          moviesCategory:tempArray
+        },()=>{
+          wx.hideLoading()
+        })
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () { },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
   /**
    * 进入电影列表页面
    */

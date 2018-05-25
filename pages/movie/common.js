@@ -10,10 +10,14 @@ let us_box = domain + 'v2/movie/us_box'
 let new_movies = domain + 'v2/movie/new_movies'
 
 let movie_subject_api = domain + 'v2/movie/subject/'
+//eg: movie_subject_api = domain + 'v2/movie/subject/:id'
+//eg movie_subject_api = 'https://douban.uieee.com/v2/movie/subject/27133303'
 
-let movie_search_api = domain + 'v2/movie/search?count=18&q='
+let movie_search_api = domain + 'v2/movie/search'
 
 let movie_celebrity_api = domain + 'v2/movie/celebrity/'
+//eg: movie_celebrity_api = domain + 'v2/movie/celebrity/:id'
+//eg: movie_celebrity_api = 'https://douban.uieee.com/v2/movie/celebrity/1275756/photos'
 
 const api = [{
     category_en: 'in_theaters',
@@ -61,23 +65,21 @@ const starArray = [
     [1, 1, 1, 1, 0],
     [1, 1, 1, 1, 1]
 ]
-/**
- * 对每一个请求数据项添加星星数组的属性
- * @method addStarArray
- * @param {array} subjects 请求结果的数组对象
- * @return {undefined} 
- * eg:addStarArray([])
- */
+
 function addStarArray(subjects) {
+  // 根据subjects为数组或json对象，选择性的加星
+  // 给数组里的每个subject加星
   if (Array.isArray(subjects)) {
     for (let i = 0; i < subjects.length; i++) {
       let stars = subjects[i].rating.stars
       subjects[i].rating['star'] = starArray[Math.round(stars / 10)]
     }
   } else {
+    // 给单个json对象的subject
     let stars = subjects.rating.stars
     subjects.rating['star'] = starArray[Math.round(stars / 10)]
   }
+  
 }
 
 /**
@@ -96,7 +98,6 @@ const requestUrl = (url, handleDataCallback) => {
       'content-type': 'json' // 默认值
     },
     success: function (res) {
-      console.log(res)
       if (res.statusCode === 200) {
         handleDataCallback(res.data)
       } else {

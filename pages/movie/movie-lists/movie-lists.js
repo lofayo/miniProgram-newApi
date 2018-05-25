@@ -1,12 +1,11 @@
 // pages/movie/movie-lists/movie-lists.js
 const movie = require('../common.js')
 const api = movie.api
-
-const util = require('../../../utils/util.js')
-const requestUrl = util.requestUrl
+const requestUrl = movie.requestUrl
+const addStarArray = movie.addStarArray
 
 // 全局变量记录下拉刷新时数据初始值
-let requestStart = 0
+let requestStart = 18
 
 // 当前页面请求数据的URL
 let url = ''
@@ -14,60 +13,6 @@ let url = ''
 
 
 Page({
-  //请求当前url接口所有数据
-  requestItemApi: function (url) {
-    let _this = this
-    let initSubjects = _this.data.subjects
-
-    let currentQueryUrl = url + '?count=18&start=' + requestStart
-    console.log(currentQueryUrl)
-    requestStart += 20
-    wx.showLoading({
-      title: 'loading',
-      mask: true
-    })    
-    wx.request({
-      url: currentQueryUrl,
-      header: {
-        'content-type': 'json' // 默认值
-      },
-      success: function (res) {
-        console.log(res)
-
-        if (res.statusCode === 200) {
-          if (res.data.subjects.length === 0) {
-            wx.hideLoading()
-            wx.showToast({
-              title: '已全部更新',
-            })
-          } else {
-            let subjects = res.data.subjects
-            addStarArray(subjects)
-            _this.setData({
-              subjects: [...subjects, ...initSubjects]
-            }, () => {
-              wx.hideLoading()
-              wx.stopPullDownRefresh()
-            })
-          }
-        } else {
-          wx.hideLoading()
-          wx.showToast({
-            title: '请求url错误',
-          })
-        }
-      },
-      // 因为网络原因请求失败
-      fail:function(){
-        wx.hideLoading()
-        wx.showToast({
-          title: '请检查网络设置',
-
-        })
-      }
-    })
-  },
-
   /**
    * 页面的初始数据
    */
@@ -79,61 +24,49 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let _this = this
     let url_id = options.url_id
     url = api[url_id].url +'?count=18'
-
-    requestUrl(url,'subjects',this)
+    
+    requestUrl(url,(resData)=>{
+      wx.setNavigationBarTitle({
+        title: resData.title,
+      })
+      let subjects = resData.subjects
+      addStarArray(subjects)
+      _this.setData({
+        subjects:subjects
+      },()=>{
+        wx.hideLoading()
+      })
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作（下拉刷新）
-   */
-  onPullDownRefresh: function () {
-    this.requestItemApi(url)
-  },
-
   /**
    * 页面上拉触底事件的处理函数（上拉加载）
    */
   onReachBottom: function () {
-
+    let _this = this
+    let queryUrl = url + '&start=' + requestStart
+    console.log(queryUrl)
+    requestUrl(queryUrl,(resData)=>{
+      console.log(resData)
+      let newSubjects = resData.subjects
+      if (newSubjects.length !== 0) {
+        addStarArray(newSubjects)
+        _this.setData({
+          subjects:[..._this.data.subjects,...newSubjects]
+        },()=>{
+          requestStart += 18
+          wx.hideLoading()
+        })
+      } else {
+        wx.hideLoading()
+        wx.showToast({
+          title: 'All loaded',
+        })
+      }
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-
   /**
    * 进入电影详情页
    */

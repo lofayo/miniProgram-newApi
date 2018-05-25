@@ -1,2 +1,23 @@
 /* pages/movie/movie-search/movie-search.wxss */
 @import "/templates/template.wxss";
+
+.search_histrory {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  background-color: #000;
+  opacity: 0.7;
+  color: white;
+  max-height:400rpx;
+  overflow-y:auto;
+}
+
+.search_histrory text{
+  padding: 24rpx 48rpx;
+  font-size: 24rpx;
+  border-bottom: 1px solid #eee;
+}
+.search_histrory_title {
+  color:#ccc;
+}

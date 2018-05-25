@@ -36,9 +36,9 @@
   
 }
 .subject_text {
-  font-size: 20rpx;
+  font-size: 24rpx;
   padding: 24rpx;
-  color:#999;
+  color:#666;
 }
 .movie_summary {
   font-size: 24rpx;
@@ -47,7 +47,7 @@
 }
 text {
   display: inline-block;
-  margin: 12rpx 0;
+  margin-top: 24rpx;
 }
 .movie_info_title {
   margin-top:36rpx;
@@ -78,14 +78,32 @@ text {
   width: 100%;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  height: 400rpx;
 }
 .cast_info {
-  flex:none;
-  width: 40%;
-  margin:0 5%;
+  box-sizing: border-box;
+  width: 25%;
+  padding: 20rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.cast_img {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.cast_name {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.movie_img {
+  flex: none;
+  width: 120rpx;
+  height: 200rpx;
+  border-radius: 8rpx;
+  margin: 12rpx;
 }

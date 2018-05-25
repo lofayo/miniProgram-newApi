@@ -238,5 +238,49 @@
 	  
 	  
 	  
+	21、js里动态设置json的key与value还是有点不同的？
+	
+	
+		_this.setData({
+			data:[]
+		})
+
+		(1)
+			key=data
+			_this.setData({
+				key:[]
+			})
+
+			
+		(2)
+			value=[]
+			_this.setData({
+				data:value
+			})
+
+		（3）
+			let key = 'name';
+			let value = 'lofayo';
+			console.log({key:value});
+			//{key: "lofayo"}
 	  
+	  22、设置本地存储数据的两种数据结构
 	  
+		（1）要么是存储一单一字符串
+				key		value
+				name	'lofayo'
+
+		（2）要么及时存储为数组，或纯数组，或包含对象的数组
+				key		value
+				score	[90,100,120]
+				person	[
+							{name:'lofayo'},
+							{name:'lofy'}
+						]
+	  
+    23、根本无法return异步函数的返回值，只能在异步函数里传入数据处理函数
+	
+	24、都是异步处理，放在一起就出问题了
+		
+		storage.initStorage('collectRecord',[])
+		storage.setStorage('collectRecord',collectValue)

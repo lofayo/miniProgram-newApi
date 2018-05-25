@@ -1,9 +1,8 @@
 // dobuan-movie/movie-subject/movie-subject.js
 const movie = require('../common.js')
 const movie_subject_api = movie.movie_subject_api
-
-const util = require('../../../utils/util.js')
-const requestUrl = util.requestUrl
+const requestUrl = movie.requestUrl
+const addStarArray = movie.addStarArray
 
 Page({
 
@@ -22,7 +21,19 @@ Page({
     let subject_id = options.subject_id
     let url = movie_subject_api + subject_id
     console.log(url)
-    requestUrl(url,'subject',this)
+    requestUrl(url,(resData)=>{
+      console.log(resData)
+      let subject = resData
+      addStarArray(subject)
+      wx.setNavigationBarTitle({
+        title: subject.title,
+      })
+      _this.setData({
+        subject:subject
+      },()=>{
+        wx.hideLoading()
+      })
+    })
   },
 
   /**

@@ -2,14 +2,22 @@
 <import src="/templates/template.wxml" />
 <!-- <template is='input_search_template' data='{{focus}}' /> -->
 <view class='search_box'>
-  <input bindconfirm='searching' focus='true' confirm-type='search' class='search_input' type='text' placeholder='请输入搜索关键字' placeholder-style='color:#ccc;font-size:20rpx'></input>
+  <input bindconfirm='searching' bindblur='inputBlur' bindfocus='inputFocus' focus='true' confirm-type='search' class='search_input' type='text' placeholder='请输入搜索关键字' placeholder-style='color:#ccc;font-size:20rpx'></input>
 </view>
+
+<view class='search_histrory' wx:if='{{showHistory}}'>
+  <text class='search_histrory_title'>搜索历史</text>
+  <block wx:for='{{historySearch}}' wx:key='index'>
+    <text bindtap='searching' data-search-key='{{item}}'>{{item}}</text>
+  </block>
+</view>
+
 <view class='movie_container'>
-  <block wx:if='{{searchData.length != 0}}'>
+  <block wx:if='{{subjects.length != 0}}'>
     <view class='movie_item_box'>
 
-      <block wx:for='{{searchData}}' wx:key='index'>
-        <template is='movie_item_template' data='{{...item}}' />
+      <block wx:for='{{subjects}}' wx:key='index' wx:for-item='subject'>
+        <template is='movie_item_template' data='{{...subject}}' />
       </block>
     </view>
   </block>

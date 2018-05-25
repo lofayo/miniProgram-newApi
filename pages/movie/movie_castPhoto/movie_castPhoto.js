@@ -22,20 +22,27 @@ Page({
     // let cast_id = 1275756
     url = movie_celebrity_api + cast_id + '/photos?count=2'
     // url = movie_celebrity_api + cast_id + '/photos?count=1'
-    // console.log(url)
+    console.log(url)
     let _this = this
 
 
     requestUrl(url, (resData) => {
       let photos = resData.photos
-      wx.setNavigationBarTitle({
-        title: photos[0].album_title
-      })
-      _this.setData({
-        photos: photos
-      }, () => {
+      if (photos.length !== 0) {
+        wx.setNavigationBarTitle({
+          title: photos[0].album_title
+        })
+        _this.setData({
+          photos: photos
+        }, () => {
+          wx.hideLoading()
+        })
+      } else {
         wx.hideLoading()
-      })
+        wx.showToast({
+          title: '演员照片为空',
+        })
+      }
     })
 
   },

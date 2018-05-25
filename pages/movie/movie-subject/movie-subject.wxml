@@ -55,27 +55,30 @@
       </view>
     </view>
 
-    <view class='movie_info' style='display:block;'>
-      <text class='movie_info_title'>主演图片：</text>
+    <view class='movie_info'>
+      <text class='movie_info_title'>主演：</text>
       <scroll-view scroll-x='true'>
         <view class='scroll_view'>
           <block wx:for='{{subject.casts}}' wx:key='index' wx:for-item='cast_item'>
             <view class='cast_info' bindtap='toCastPhotos' data-cast_id='{{cast_item.id}}'>
-              <image style='width: 100%;' src='{{cast_item.avatars.small}}'></image>
-              <text style='margin-top:36rpx;'>{{cast_item.name}}({{cast_item.name_en}})</text>
+              <image class='cast_img' src='{{cast_item.avatars.small}}'></image>
+              <text class='cast_name'>{{cast_item.name}}</text>
+              <text class='cast_name'>({{cast_item.name_en}})</text>
             </view>
           </block>
         </view>
       </scroll-view>
     </view>
-    <view class='movie_info' style='display:block;'>
+    <view class='movie_info'>
       <text class='movie_info_title'>电影剧照：</text>
-      <scroll-view scroll-x='true' scroll-with-animation='true' style='width:100%;white-space:nowrap;height:300rpx;'>
-        <block wx:for='{{subject.photos}}' wx:key='index' wx:for-item='photo_item'>
-          <image bindtap='previewPhoto' data-src='{{photo_item.image}}' style='width:50%;' src='{{photo_item.image}}'></image>
-        </block>
+      <scroll-view scroll-x>
+        <view class='scroll_view'>
+          <block wx:for='{{subject.photos}}' wx:key='index' wx:for-item='photo_item'>
+            <image mode='aspectFill' class='movie_img' bindtap='previewPhoto' data-src='{{photo_item.image}}' src='{{photo_item.image}}'></image>
+          </block>
+        </view>
       </scroll-view>
-      <text data-subject_id='{{subject.id}}' bindtap='toMorePhotos'>更多剧照>></text>
+      <text data-subject_id='{{subject.id}}' bindtap='toMorePhotos' style='color:#00CD00;display:flex;justify-content:center;'>更多剧照...</text>
     </view>
     <view class='movie_info'>
       <text class='movie_info_title'>电影剧情：</text>
