@@ -98,7 +98,7 @@ const storage = {
         // 成功回调，第二次设值
         success: function (res) {
           // 1、存储结构为一对象
-          if (typeof value === 'object') {
+          if (typeof res.data === 'object') {
             // 1.1 存储结构为一数组
             if (Array.isArray(res.data)) {
               // 这个value可以为一单值，也可以为一对象

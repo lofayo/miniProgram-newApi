@@ -1,0 +1,10 @@
+<!--pages/movie/subject_comments/subject_comments.wxml-->
+<import src='../movie_template/movie_template.wxml' />
+
+
+<view class='box'>
+  <view class='comment_review_logo'>评论/影评：</view>
+  <block wx:for='{{comments_reviews}}' wx:key='index' wx:for-item='comment_review'>
+    <template is='comment_review_template' data='{{...comment_review}}' />
+  </block>
+</view>

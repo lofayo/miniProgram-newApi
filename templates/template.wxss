@@ -1,7 +1,7 @@
 /* templates/template.wxss */
 .movie_container {
   padding: 24rpx;
-  font-size: 24rpx;
+  font-size: 30rpx;
   overflow: hidden;
   background-color: #fff;
   margin-bottom: 24rpx;
@@ -13,10 +13,6 @@
   padding: 24rpx 0;
 }
 
-.more {
-  color: #00CD00;
-  font-weight: bold;
-}
 .movie_surface {
   width: 100%;
   height: 320rpx;
@@ -59,7 +55,7 @@
 }
 .search_input {
   background-color: #fff;
-  font-size: 24rpx;
+  font-size: 30rpx;
   border-radius: 10rpx;
   padding-left: 48rpx;
 }

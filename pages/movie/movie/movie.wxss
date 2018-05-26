@@ -4,5 +4,8 @@
 page {
   background-color: #ddd;
 }
+.more {
+  padding: 0;
+}
 
 

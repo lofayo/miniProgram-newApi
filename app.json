@@ -1,19 +1,22 @@
 {
   "pages": [
-    "pages/article/article/article",
     "pages/movie/movie/movie",
-    "pages/movie/movie-search/movie-search",
-    "pages/movie/movie-lists/movie-lists",
-    "pages/movie/movie_morePhoto/movie_morePhoto",
-    "pages/movie/movie_castPhoto/movie_castPhoto",
     "test/test",
+    "pages/movie/subject_comments/subject_comments",
+    "pages/movie/movie_cast/movie_cast",
+    "pages/movie/movie_morePhoto/movie_morePhoto",
     "pages/welcome/welcome",
+    "pages/article/article/article",
     "pages/movie/movie-subject/movie-subject",
+    "pages/movie/movie-lists/movie-lists",
     "pages/article/article-content/article-content",
     "pages/index/index",
     "pages/logs/logs",
     "templates/template",
-    "pages/movie/movie_template/movie_template"
+    "pages/movie/movie-search/movie-search",
+    "pages/movie/movie_castPhoto/movie_castPhoto",
+    "pages/movie/movie_castWorks/movie_castWorks",
+    "pages/movie/subject_reviews/subject_reviews"
   ],
   "window": {
     "backgroundTextStyle": "light",

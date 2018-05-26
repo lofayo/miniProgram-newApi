@@ -108,7 +108,7 @@ Page({
  */
   inputBlur: function () {
     this.setData({
-      showHistory: false
+      // showHistory: false
     })
   },
   /**

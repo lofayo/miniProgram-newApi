@@ -21,7 +21,7 @@
   padding: 36rpx;
 }
 .article_release {
-  font-size: 24rpx;
+  font-size: 30rpx;
   color: #999;
 }
 .col_share {
@@ -46,5 +46,5 @@
 }
 .article_content_text {
   color: #666;
-  font-size: 24rpx;
+  font-size: 30rpx;
 }

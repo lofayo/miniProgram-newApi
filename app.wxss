@@ -28,3 +28,10 @@ page {
   font-size: 48rpx;
   margin-bottom: 36rpx;
 }
+
+/*整个app里的更多  */
+.more {
+  color: #00CD00;
+  font-weight: bold;
+  padding: 24rpx 0;
+}

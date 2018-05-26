@@ -37,55 +37,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
-
-  /**
    * 点击剧照预览
    */
   previewPhoto: function (e) {
@@ -102,8 +53,20 @@ Page({
     })
   },
 
+
   /**
-   * 进入进入更多剧照页面
+   * 进入演员介绍页面
+   */
+  toCast: function (e) {
+    // console.log(e)
+    let cast_id = e.currentTarget.dataset.cast_id
+    wx.navigateTo({
+      url: '/pages/movie/movie_cast/movie_cast?cast_id=' + cast_id,
+    })
+  },
+
+  /**
+   * 进入更多剧照页面
    */
   toMorePhotos: function (e) {
     // console.log(e)
@@ -114,13 +77,14 @@ Page({
   },
 
   /**
-   * 进入演员照片页面
+   * 进入更多评论/影评页面
    */
-  toCastPhotos: function (e) {
+  toMoreComments: function (e) {
     // console.log(e)
-    let cast_id = e.currentTarget.dataset.cast_id
+    let subject_id = e.currentTarget.dataset.subject_id
+    let comments_reviews_category = e.currentTarget.dataset.comments_reviews_category
     wx.navigateTo({
-      url: '/pages/movie/movie_castPhoto/movie_castPhoto?cast_id=' + cast_id,
+      url: '/pages/movie/subject_comments/subject_comments?subject_id=' + subject_id + '&comments_reviews_category=' + comments_reviews_category,
     })
   }
 })

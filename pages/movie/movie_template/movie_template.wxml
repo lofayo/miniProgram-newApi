@@ -5,3 +5,37 @@
     <text>图片制作于：{{created_at}}</text>
   </view>
 </template>
+
+<!--电影列表中的电影项模板  -->
+<template name="movie_item_template">
+  <view class='movie_item' bindtap='toMovieSubject' data-subject_id='{{id}}'>
+    <image src='{{images.large}}' class='movie_surface'></image>
+    <text class='movie_title'>{{title}}</text>
+    <view class='comment'>
+      <template is='star_template' data='{{...rating}}' />
+      <text style='padding-left:24rpx;'>{{rating.average}}</text>
+    </view>
+  </view>
+</template>
+
+<!--星级组件  -->
+<template name='star_template'>
+  <block wx:for='{{star}}' wx:for-item='star_item' wx:key='index'>
+    <image class='star' src="{{star_item === 1 ? '/images/icon/star.png' : '/images/icon/none-star.png'}}"></image>
+  </block>
+</template>
+
+<!--电影评论/影评组件  -->
+<template name='comment_review_template'>
+  <view class='comment_review_item'>
+      <view class='comment_review_info'>
+        <image class='author_image' src='{{author.avatar}}'></image>
+        <text>{{author.name}}</text>
+        <text wx:if='{{created_at}}'>{{created_at}}</text>
+      </view>
+      <view class='preview_title' wx:if='{{title}}'>{{title}}</view>
+      <view wx:if='{{content}}' class='comment_review_centent'>{{content}}</view>
+      <view wx:else='{{summary}}' class='comment_review_centent'>{{summary}}</view>
+    </view>
+</template>
+

@@ -1,0 +1,7 @@
+<!--pages/movie/movie_castWork/movie_castWorks.wxml-->
+<import src='../movie_template/movie_template.wxml' />
+<view class='movie_item_box'>
+  <block wx:for='{{works}}' wx:key='index' wx:for-item='work'>
+    <template is='movie_item_template' data='{{...work.subject}}' />
+  </block>
+</view>

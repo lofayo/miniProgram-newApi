@@ -1,7 +1,9 @@
 <!--test/test.wxml-->
-  <!-- <web-view src="https://vt1.doubanio.com/201805241859/8a0e6d64dbfbd56be469d0f6d1a320d8/view/movie/M/302310020.mp4"></web-view>   -->
+     <web-view src="https://vt1.doubanio.com/201805261354/53d922d1caace5a298c1abdf753b39be/view/movie/M/302020194.mp4"></web-view>     
  <!-- <web-view src="http://new.pospi.com/app/index.php?i=8&c=entry&do=index&m=yhh_video"></web-view>  -->
- <!-- <video src='https://vt1.doubanio.com/201805241859/8a0e6d64dbfbd56be469d0f6d1a320d8/view/movie/M/302310020.mp4'></video>  -->
+  <!-- <video src='https://vt1.doubanio.com/201805241859/8a0e6d64dbfbd56be469d0f6d1a320d8/view/movie/M/302310020.mp4'></video>   -->
+   <!-- <video src='http://vt1.doubanio.com/201805261354/53d922d1caace5a298c1abdf753b39be/view/movie/M/302020194.mp4'></video>    -->
+  
  <!-- <live-player src="https://vt1.doubanio.com/201805241859/8a0e6d64dbfbd56be469d0f6d1a320d8/view/movie/M/302310020.mp4" mode="RTC" autoplay style="width: 300px; height: 225px;" /> -->
 <text>{{data}}</text>
 <view wx:for='{{info}}'>

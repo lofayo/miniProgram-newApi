@@ -6,10 +6,10 @@
 </view>
 
 <view class='search_histrory' wx:if='{{showHistory}}'>
-  <text class='search_histrory_title'>搜索历史</text>
-  <block wx:for='{{historySearch}}' wx:key='index'>
-    <text bindtap='searching' data-search-key='{{item}}'>{{item}}</text>
-  </block>
+    <text class='search_histrory_title'>搜索历史</text>
+    <block wx:for='{{historySearch}}' wx:key='index'>
+      <text bindtap='searching' data-search-key='{{item}}'>{{item}}</text>
+    </block>
 </view>
 
 <view class='movie_container'>

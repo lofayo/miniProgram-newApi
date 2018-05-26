@@ -1,23 +1,18 @@
-// pages/movie/movie-lists/movie-lists.js
+// pages/movie/movie_castWork/movie_castWorks.js
 const movie = require('../common.js')
-const api = movie.api
+const movie_celebrity_api = movie.movie_celebrity_api
 const requestUrl = movie.requestUrl
 const addStarArray = movie.addStarArray
 
-// 全局变量记录下拉刷新时数据初始值
-let requestStart = 18
-
-// 当前页面请求数据的URL
 let url = ''
-
-
-
+let pullDownRefreshStart = 18
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    subjects: []
+    works:[]
   },
 
   /**
@@ -25,19 +20,17 @@ Page({
    */
   onLoad: function (options) {
     let _this = this
-    let url_id = options.url_id
-    url = api[url_id].url + '?count=18'
-
-
-    requestUrl(url, (resData) => {
-      wx.setNavigationBarTitle({
-        title: resData.title,
-      })
-      let subjects = resData.subjects
-      addStarArray(subjects)
+    let cast_id = options.cast_id
+    url = movie_celebrity_api + cast_id + '/works?count=18'
+    requestUrl(url,(resData)=>{
+      console.log(resData)
+      let works = resData.works
+      for (let work of works) {
+        addStarArray(work.subject)
+      }
       _this.setData({
-        subjects: subjects
-      }, () => {
+        works:works
+      },()=>{
         wx.hideLoading()
       })
     })
@@ -47,17 +40,20 @@ Page({
    */
   onReachBottom: function () {
     let _this = this
-    let queryUrl = url + '&start=' + requestStart
+    let queryUrl = url + '&start=' + pullDownRefreshStart
     console.log(queryUrl)
     requestUrl(queryUrl, (resData) => {
       console.log(resData)
-      let newSubjects = resData.subjects
-      if (newSubjects.length !== 0) {
-        addStarArray(newSubjects)
+      let works = resData.works
+      
+      if (works.length !== 0) {
+        for (let work of works) {
+          addStarArray(work.subject)
+        }
         _this.setData({
-          subjects: [..._this.data.subjects, ...newSubjects]
+          works: [..._this.data.works, ...works]
         }, () => {
-          requestStart += 18
+          pullDownRefreshStart += 18
           wx.hideLoading()
         })
       } else {

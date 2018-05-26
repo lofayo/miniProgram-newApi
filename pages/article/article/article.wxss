@@ -24,11 +24,11 @@ swiper {
 }
 
 .info_content {
-  font-size: 24rpx;
+  font-size: 30rpx;
   color:#666;
 }
 .col_see {
-  font-size: 24rpx;
+  font-size: 30rpx;
   margin: 12rpx 0;
 }
 .star,.see {

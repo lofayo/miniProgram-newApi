@@ -1,0 +1,2 @@
+/* pages/movie/movie_castWork/movie_castWorks.wxss */
+@import '../movie_template/movie_template.wxss';

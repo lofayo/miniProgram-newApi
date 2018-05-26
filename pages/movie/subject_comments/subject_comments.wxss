@@ -1,0 +1,4 @@
+/* pages/movie/subject_comments/subject_comments.wxss */
+@import '../movie_template/movie_template.wxss';
+
+

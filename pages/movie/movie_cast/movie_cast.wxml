@@ -1,0 +1,65 @@
+<!--pages/movie/movie_cast/movie_cast.wxml-->
+<import src='../movie_template/movie_template.wxml' />
+<view class='cast_info'>
+    <view class='bg' style='background:url("{{cast.avatars.large}}") no-repeat center / cover;'></view>
+    <view class='cast_context'>
+        <text class='cast_title'>{{cast.name}}({{cast.name_en}})</text>
+        <view class='cast_info_detail'>
+            <image class='cast_logo' src='{{cast.avatars.large}}'></image>
+            <view>
+                <view class='cast_detail_item'>
+                    <text class='detail_item_title'>性别: </text>
+                    <text>{{cast.gender}}</text>
+                </view>
+                <view class='cast_detail_item'>
+                    <text class='detail_item_title'>星座: </text>
+                    <text>{{cast.constellation}}</text>
+                </view>
+                <view class='cast_detail_item'>
+                    <text class='detail_item_title'>出生日期: </text>
+                    <text>{{cast.birthday}}</text>
+                </view>
+                <view class='cast_detail_item'>
+                    <text class='detail_item_title'>出生地: </text>
+                    <text>{{cast.born_place}}</text>
+                </view>
+                <view class='cast_detail_item'>
+                    <text class='detail_item_title'>职业: </text>
+                    <text>{{cast.professions}}</text>
+                </view>
+                <view class='cast_detail_item'>
+                    <text class='detail_item_title'>更多中文名: </text>
+                    <block wx:for='{{cast.aka}}' wx:key='index'>
+                        <text>{{item}}</text>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<view class='cast_summary'>
+    <view class='info_title'>影人简介：</view>
+    <view>{{cast.summary}}</view>
+</view>
+<view class='cast_works'>
+    <view class='info_title'>影人作品：</view>
+    <scroll-view scroll-x>
+        <view class='scroll_view'>
+            <block wx:for='{{cast.works}}' wx:key='index' wx:for-item='work'>
+                <template is='movie_item_template' data='{{...work.subject}}' />
+            </block>
+        </view>
+    </scroll-view>
+    <view class='more' bindtap='toCastWorks' data-cast_id='{{cast.id}}'>更多影人作品...</view>
+</view>
+<view class='cast_photos'>
+    <view class='info_title'>影人照片：</view>
+    <scroll-view scroll-x>
+        <view class='scroll_view'>
+            <block wx:for='{{cast.photos}}' wx:key='index' wx:for-item='photo'>
+                <image class='photo_item' bindtap='previewPhoto' data-src='{{photo_item.image}}' src='{{photo.image}}'></image>
+            </block>
+        </view>
+    </scroll-view>
+    <view class='more' bindtap='toCastPhotos' data-cast_id='{{cast.id}}'>更多影人剧照...</view>
+</view>

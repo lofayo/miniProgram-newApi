@@ -1,5 +1,5 @@
 <!--dobuan-movie/movie-subject/movie-subject.wxml-->
-<import src='/templates/template.wxml' />
+<import src='../movie_template/movie_template.wxml' />
 <view class='subject'>
   <view class='header' style='background:url("{{subject.images.large}}") no-repeat 0 0 / 100%'>
     <view class='header_text'>
@@ -60,7 +60,7 @@
       <scroll-view scroll-x='true'>
         <view class='scroll_view'>
           <block wx:for='{{subject.casts}}' wx:key='index' wx:for-item='cast_item'>
-            <view class='cast_info' bindtap='toCastPhotos' data-cast_id='{{cast_item.id}}'>
+            <view class='cast_info' bindtap='toCast' data-cast_id='{{cast_item.id}}'>
               <image class='cast_img' src='{{cast_item.avatars.small}}'></image>
               <text class='cast_name'>{{cast_item.name}}</text>
               <text class='cast_name'>({{cast_item.name_en}})</text>
@@ -78,26 +78,25 @@
           </block>
         </view>
       </scroll-view>
-      <text data-subject_id='{{subject.id}}' bindtap='toMorePhotos' style='color:#00CD00;display:flex;justify-content:center;'>更多剧照...</text>
+      <text data-subject_id='{{subject.id}}' bindtap='toMorePhotos' class='more'>更多剧照...</text>
     </view>
     <view class='movie_info'>
       <text class='movie_info_title'>电影剧情：</text>
       <view class='movie_summary'>{{subject.summary}}</view>
     </view>
-    <view class='movie_info'>
-      <text class='movie_info_title'>影评：</text>
-      <block wx:for='{{subject.popular_reviews}}' wx:key='index' wx:for-item='review_item'>
-        <view class='hot_review_item'>
-          <view class='review_info'>
-            <image class='author_image' src='{{review_item.author.avatar}}'></image>
-            <text style='margin-left:36rpx;'>{{review_item.author.name}}</text>
-          </view>
-          <view class='review_content'>
-            <view>{{review_item.title}}</view>
-            <view>{{review_item.summary}}</view>
-          </view>
-        </view>
+    <view class='movie_info box'>
+      <view class='comment_review_logo'>评论：</view>
+      <block wx:for='{{subject.popular_comments}}' wx:key='index' wx:for-item='comment'>
+        <template is='comment_review_template' data='{{...comment}}' />
       </block>
+      <view bindtap='toMoreComments' data-comments_reviews_category='comments' data-subject_id='{{subject.id}}' class='more'>更多评论...</view>
+    </view>
+    <view class='movie_info'>
+      <view class='comment_review_logo'>影评：</view>
+      <block wx:for='{{subject.popular_reviews}}' wx:key='index' wx:for-item='review'>
+        <template is='comment_review_template' data='{{...review}}' />
+      </block>
+      <view bindtap='toMoreComments' data-comments_reviews_category='reviews' data-subject_id='{{subject.id}}' class='more'>更多影评...</view>
     </view>
   </view>
 </view>
