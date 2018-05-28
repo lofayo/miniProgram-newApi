@@ -28,7 +28,7 @@ Page({
 
     // 获取传递到当前页面的查询参数，并取到对应的文章项
     var articleID = options.articleID;
-    console.log(articleID)
+    // console.log(articleID)
     this.setData({
       currentArticle: data.data[articleID]
     }, () => {
@@ -42,7 +42,7 @@ Page({
 
     //2、用收藏的结果渲染页面
     storage.getStorage('collectRecord', (resData) => {
-      console.log(resData)
+      // console.log(resData)
       let key = 'collection_article_' + _this.data.currentArticle.postId
       // 新进入一个文章页，根本没设置过该页面的收藏
       if (resData[key] !== undefined) {

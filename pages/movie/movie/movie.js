@@ -21,7 +21,7 @@ Page({
     for (let i = 0; i < 3; i++) {
       let url = api[i].url + '?start=0&count=3'
       requestUrl(url,(resData)=>{ 
-        console.log(resData)
+        // console.log(resData)
         let subjects = resData.subjects
         addStarArray(subjects)
         let tempJson = {}

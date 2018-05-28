@@ -1,11 +1,11 @@
 {
   "pages": [
+    "pages/welcome/welcome",
     "pages/movie/movie/movie",
     "test/test",
     "pages/movie/subject_comments/subject_comments",
     "pages/movie/movie_cast/movie_cast",
     "pages/movie/movie_morePhoto/movie_morePhoto",
-    "pages/welcome/welcome",
     "pages/article/article/article",
     "pages/movie/movie-subject/movie-subject",
     "pages/movie/movie-lists/movie-lists",
@@ -21,7 +21,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#00CD00",
-    "navigationBarTitleText": "一段有意思的小程序",
+    "navigationBarTitleText": "Mini",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#cccccc"
   },
@@ -30,16 +30,16 @@
     "selectedColor": "blue",
     "list": [
       {
-        "pagePath": "pages/article/article/article",
-        "text": "最新影评",
-        "iconPath": "/images/tab/yuedu.png",
-        "selectedIconPath": "/images/tab/yuedu_hl.png"
-      },
-      {
         "pagePath": "pages/movie/movie/movie",
         "text": "豆瓣电影",
         "iconPath": "/images/tab/dianying.png",
         "selectedIconPath": "/images/tab/dianying_hl.png"
+      },
+      {
+        "pagePath": "pages/article/article/article",
+        "text": "最新影评",
+        "iconPath": "/images/tab/yuedu.png",
+        "selectedIconPath": "/images/tab/yuedu_hl.png"
       }
     ]
   },

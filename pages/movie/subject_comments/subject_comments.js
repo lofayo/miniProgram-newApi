@@ -33,7 +33,7 @@ Page({
     comments_reviews_category = options.comments_reviews_category
 
     url = movie_subject_api + subject_id + '/' + comments_reviews_category+'?count=4'
-    console.log(url)
+    // console.log(url)
     requestUrl(url,(resData)=>{
       let comments_reviews = resData[comments_reviews_category]
       _this.setData({
@@ -50,9 +50,9 @@ Page({
   onPullDownRefresh: function () {
     let _this = this
     let queryUrl = url + '&start=' + pullDownRefreshStart
-    console.log(queryUrl)
+    // console.log(queryUrl)
     requestUrl(queryUrl, (resData) => {
-      console.log(resData)
+      // console.log(resData)
       let comments_reviews = resData[comments_reviews_category]
       if (comments_reviews.length !== 0) {
         _this.setData({

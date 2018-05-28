@@ -71,7 +71,7 @@ Page({
    */
   toArticleLists: function () {
     wx.switchTab({
-      url: '/pages/article/article/article'
+      url: '/pages/movie/movie/movie'
     })
   }
 })

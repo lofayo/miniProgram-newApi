@@ -42,7 +42,7 @@ Page({
     //2、不是 url = url +searchKey（其实方便了后续下拉刷新），因为每次搜索都必须重拼关键词
     let queryUrl = url + searchKey
     requestUrl(queryUrl, (resData) => {
-      console.log(resData)
+      // console.log(resData)
       wx.setNavigationBarTitle({
         title: resData.title,
       })
@@ -72,7 +72,7 @@ Page({
   onReachBottom: function () {
     let _this = this
     let queryUrl = url + searchKey + '&start=' + requestStart
-    console.log(queryUrl)
+    // console.log(queryUrl)
     requestUrl(queryUrl, (resData) => {
       let newSubjects = resData.subjects
       if (newSubjects.length !== 0) {

@@ -23,8 +23,11 @@ Page({
     let cast_id = options.cast_id
     url = movie_celebrity_api + cast_id + '/works?count=18'
     requestUrl(url,(resData)=>{
-      console.log(resData)
+      // console.log(resData)
       let works = resData.works
+      wx.setNavigationBarTitle({
+        title: resData.celebrity.name
+      })
       for (let work of works) {
         addStarArray(work.subject)
       }
@@ -41,9 +44,9 @@ Page({
   onReachBottom: function () {
     let _this = this
     let queryUrl = url + '&start=' + pullDownRefreshStart
-    console.log(queryUrl)
+    // console.log(queryUrl)
     requestUrl(queryUrl, (resData) => {
-      console.log(resData)
+      // console.log(resData)
       let works = resData.works
       
       if (works.length !== 0) {

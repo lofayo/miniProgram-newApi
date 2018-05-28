@@ -19,7 +19,7 @@ Page({
     let cast_id = options.cast_id
     let url = movie_celebrity_api+cast_id
     requestUrl(url,(resData)=>{
-      console.log(resData)
+      // console.log(resData)
       _this.setData({
         cast:resData
       },()=>{
@@ -32,7 +32,7 @@ Page({
    * 跳转到作品
    */
   toMovieSubject:function(e){
-    console.log(e)
+    // console.log(e)
     let subject_id = e.currentTarget.dataset.subject_id
     wx.navigateTo({
       url: '/pages/movie/movie-subject/movie-subject?subject_id=' + subject_id,
@@ -43,7 +43,7 @@ Page({
    * 跳转到更多影人作品
    */
   toCastWorks: function (e) {
-    console.log(e)
+    // console.log(e)
     let cast_id = e.currentTarget.dataset.cast_id
     wx.navigateTo({
       url: '/pages/movie/movie_castWorks/movie_castWorks?cast_id=' + cast_id,
@@ -53,7 +53,7 @@ Page({
    * 跳转到更多影人剧照
    */
   toCastPhotos: function (e) {
-    console.log(e)
+    // console.log(e)
     let cast_id = e.currentTarget.dataset.cast_id
     wx.navigateTo({
       url: '/pages/movie/movie_castPhoto/movie_castPhoto?cast_id=' + cast_id,
@@ -64,7 +64,7 @@ Page({
    * 点击剧照预览
    */
   previewPhoto: function (e) {
-    console.log(e)
+    // console.log(e)
     let currentPhotoUrl = e.currentTarget.dataset.src
     let allPhotoUrl = []
     let photos = this.data.cast.photos
