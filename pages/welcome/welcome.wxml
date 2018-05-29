@@ -1,6 +1,6 @@
 <!--pages/welcome/welcome.wxml-->
 <view class='welcome_box'>
-  <view class='me_logo'></view>
-  <text>lofayo</text>
-  <button bindtap="toArticleLists">Welcome to myMini</button>
+  <image src='/images/me.jpg' class='me_logo'></image>
+  <text style='font-weight:bold'>lofayo</text>
+  <button style='font-weight:bold' bindtap="toArticleLists">Welcome to myMini</button>
 </view>

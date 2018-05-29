@@ -20,7 +20,7 @@ Page({
     let _this = this
     let subject_id = options.subject_id
     let url = movie_subject_api + subject_id
-    // console.log(url)
+    console.log(url)
     requestUrl(url,(resData)=>{
       // console.log(resData)
       let subject = resData

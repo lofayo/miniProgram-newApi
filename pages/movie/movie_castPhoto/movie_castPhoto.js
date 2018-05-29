@@ -3,7 +3,7 @@ const movie = require('../common.js')
 const movie_celebrity_api = movie.movie_celebrity_api
 const requestUrl = movie.requestUrl
 let url = ''
-let pullDownRefreshStart = 2
+let pullDownRefreshStart = 4
 
 Page({
 
@@ -20,7 +20,7 @@ Page({
   onLoad: function (options) {
     let cast_id = options.cast_id
     // let cast_id = 1275756
-    url = movie_celebrity_api + cast_id + '/photos?count=2'
+    url = movie_celebrity_api + cast_id + '/photos?count=4'
     // url = movie_celebrity_api + cast_id + '/photos?count=1'
     console.log(url)
     let _this = this
@@ -66,7 +66,7 @@ Page({
         _this.setData({
             photos: [..._this.data.photos, ...resData.photos]
         }, () => {
-          pullDownRefreshStart += 2
+          pullDownRefreshStart += 4
           wx.hideLoading()
           wx.stopPullDownRefresh()
         })

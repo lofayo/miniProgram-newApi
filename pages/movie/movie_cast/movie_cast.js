@@ -18,8 +18,9 @@ Page({
     let _this = this
     let cast_id = options.cast_id
     let url = movie_celebrity_api+cast_id
+    console.log(url)
     requestUrl(url,(resData)=>{
-      // console.log(resData)
+      console.log(resData)
       _this.setData({
         cast:resData
       },()=>{
@@ -66,6 +67,7 @@ Page({
   previewPhoto: function (e) {
     // console.log(e)
     let currentPhotoUrl = e.currentTarget.dataset.src
+    
     let allPhotoUrl = []
     let photos = this.data.cast.photos
     for (let photo of photos) {

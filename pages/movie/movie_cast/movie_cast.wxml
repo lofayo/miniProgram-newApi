@@ -57,7 +57,7 @@
     <scroll-view scroll-x>
         <view class='scroll_view'>
             <block wx:for='{{cast.photos}}' wx:key='index' wx:for-item='photo'>
-                <image class='photo_item' bindtap='previewPhoto' data-src='{{photo_item.image}}' src='{{photo.image}}'></image>
+                <image class='photo_item' bindtap='previewPhoto' data-src='{{photo.image}}' src='{{photo.image}}'></image>
             </block>
         </view>
     </scroll-view>

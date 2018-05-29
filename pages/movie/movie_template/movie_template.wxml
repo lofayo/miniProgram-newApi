@@ -2,7 +2,7 @@
 <template name='photo_template'>
     <view class='photo_item'>
     <image mode='widthFix' bindtap='previewPhoto' data-src='{{image}}' class='photo_item_img' src='{{image}}'></image>
-    <text>图片制作于：{{created_at}}</text>
+    <text>图片作于：{{created_at}}</text>
   </view>
 </template>
 

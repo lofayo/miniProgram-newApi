@@ -60,10 +60,15 @@
       <scroll-view scroll-x='true'>
         <view class='scroll_view'>
           <block wx:for='{{subject.casts}}' wx:key='index' wx:for-item='cast_item'>
-            <view class='cast_info' bindtap='toCast' data-cast_id='{{cast_item.id}}'>
+            <view wx:if='{{cast_item.id !== null}}' class='cast_info' bindtap='toCast' data-cast_id='{{cast_item.id}}'>
               <image class='cast_img' src='{{cast_item.avatars.small}}'></image>
               <text class='cast_name'>{{cast_item.name}}</text>
               <text class='cast_name'>({{cast_item.name_en}})</text>
+            </view>
+            <view wx:else class='cast_info'>
+              <image class='cast_img' src='/images/lost.jpg'></image>
+              <text class='cast_name'>演员</text>
+              <text class='cast_name'>未更新</text>
             </view>
           </block>
         </view>
@@ -86,17 +91,27 @@
     </view>
     <view class='movie_info box'>
       <view class='comment_review_logo'>评论：</view>
-      <block wx:for='{{subject.popular_comments}}' wx:key='index' wx:for-item='comment'>
-        <template is='comment_review_template' data='{{...comment}}' />
+      <block wx:if='{{subject.comments_count !== 0}}'>
+        <block wx:for='{{subject.popular_comments}}' wx:key='index' wx:for-item='comment'>
+          <template is='comment_review_template' data='{{...comment}}' />
+        </block>
+        <view bindtap='toMoreComments' data-comments_reviews_category='comments' data-subject_id='{{subject.id}}' class='more'>更多评论...</view>
       </block>
-      <view bindtap='toMoreComments' data-comments_reviews_category='comments' data-subject_id='{{subject.id}}' class='more'>更多评论...</view>
-    </view>
-    <view class='movie_info'>
-      <view class='comment_review_logo'>影评：</view>
-      <block wx:for='{{subject.popular_reviews}}' wx:key='index' wx:for-item='review'>
-        <template is='comment_review_template' data='{{...review}}' />
+      <block wx:else>
+        <view class='more'>还没有评论...(-﹏-)</view>
       </block>
-      <view bindtap='toMoreComments' data-comments_reviews_category='reviews' data-subject_id='{{subject.id}}' class='more'>更多影评...</view>
+      </view>
+      <view class='movie_info'>
+        <view class='comment_review_logo'>影评：</view>
+        <block wx:if='{{subject.reviews_count !== 0}}'>
+          <block wx:for='{{subject.popular_reviews}}' wx:key='index' wx:for-item='review'>
+            <template is='comment_review_template' data='{{...review}}' />
+          </block>
+          <view bindtap='toMoreComments' data-comments_reviews_category='reviews' data-subject_id='{{subject.id}}' class='more'>更多影评...</view>
+        </block>
+        <block wx:else>
+          <view class='more'>还没有影评...(-﹏-)</view>
+        </block>
+        </view>
+      </view>
     </view>
-  </view>
-</view>
