@@ -2,5 +2,5 @@
 
 **扫一扫，敬请体验！**
 
-![image](https://raw.githubusercontent.com/lofayo/images/master/miniProgram.jpg)
+![image](https://raw.githubusercontent.com/lofayo/images/master/miniProgram/miniProgram.jpg)
 
