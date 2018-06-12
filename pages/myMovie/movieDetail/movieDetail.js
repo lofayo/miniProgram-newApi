@@ -1,18 +1,31 @@
-// pages/movie/subject_reviews/subject_reviews.js
+// pages/myMovie/movieDetail/movieDetail.js
+
+const data = require('../myMovieData.js')
+
+const myMovieData = data.myMovieData
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    currentMovie:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    console.log(options);
+    let id = options.id;
+    let name = options.name;
+    wx.setNavigationBarTitle({
+      title: name
+    })
+    this.setData({
+      currentMovie: myMovieData[id]
+    })
   },
 
   /**

@@ -1,0 +1,8 @@
+<!--pages/myMovie/movieDetail/movieDetail.wxml-->
+<view class='video_box'>
+  <video class='movie_player' src='{{currentMovie.video_url}}' poster='{{currentMovie.poster}}'></video>
+  <view class='des'>
+    <text>电影梗概：</text>
+    {{currentMovie.description}}
+  </view>
+</view>

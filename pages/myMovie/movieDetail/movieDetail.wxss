@@ -1,0 +1,21 @@
+/* pages/myMovie/movieDetail/movieDetail.wxss */
+
+.video_box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.movie_player {
+  width: 100%;
+  height: 450rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.des {
+  padding: 20rpx;
+  margin-top: 20rpx;
+  text-indent: 2em;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: #666;
+}

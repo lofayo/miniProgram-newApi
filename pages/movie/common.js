@@ -19,6 +19,12 @@ let movie_celebrity_api = domain + 'v2/movie/celebrity/'
 //eg: movie_celebrity_api = domain + 'v2/movie/celebrity/:id'
 //eg: movie_celebrity_api = 'https://douban.uieee.com/v2/movie/celebrity/1275756/photos'
 
+
+// 书籍相关的
+
+
+
+
 const api = [{
     category_en: 'in_theaters',
     category: '正在热映',

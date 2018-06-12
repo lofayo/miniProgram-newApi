@@ -1,7 +1,8 @@
 <!--test/test.wxml-->
-     <web-view src="https://vt1.doubanio.com/201805261354/53d922d1caace5a298c1abdf753b39be/view/movie/M/302020194.mp4"></web-view>     
+     <!-- <web-view src="https://vt1.doubanio.com/201805261354/53d922d1caace5a298c1abdf753b39be/view/movie/M/302020194.mp4"></web-view>      -->
  <!-- <web-view src="http://new.pospi.com/app/index.php?i=8&c=entry&do=index&m=yhh_video"></web-view>  -->
-  <!-- <video src='https://vt1.doubanio.com/201805241859/8a0e6d64dbfbd56be469d0f6d1a320d8/view/movie/M/302310020.mp4'></video>   -->
+ <image src='https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2508925590.webp'></image>
+   <video src='http://pcvideows.titan.mgtv.com/c1/2018/02/25_0/6C65EC96A0932CD7265BB68E6700D4CB_20180225_1_1_438.mp4?arange=0&pm=Gw3TNbWn9Ykvvvgj7kAl7hR0zrjF8D80V9roRSwxMZBJhJ8AWAXWdkGjjziVLA~N7~8J_S4OSLbkOgRXufsm8dvCXEkJ~y_uNb6_1ZWS_kLcVoCS2~RkFdIfSk8GPU3zx3MP67ohYVjzhcQR4OsS~ZU4mFqRXM1yIwgFwJD4vPiULjDRFY02Ru7uIv8miiPPZDtYi89RRbVsKd_dJYizm7fZrImL87~8FO7hM6kbOa1CUeGk_4lT9mB17b7Y1EBsDPQ1N0nShH~ZGMzB7m2sWeZ6psZWDQ7__SK6Sd7JaXZSsZSHWWB1sWgl4WGE1~LCZru_IcFRfuk1~zwp1~DxAdbJ4gwZW8_xNHoC2yawSBMFa6suHef6WKO7g6B19MW9_GVcd_1GBDMpzVGessOyJg--'></video>   
    <!-- <video src='http://vt1.doubanio.com/201805261354/53d922d1caace5a298c1abdf753b39be/view/movie/M/302020194.mp4'></video>    -->
   
  <!-- <live-player src="https://vt1.doubanio.com/201805241859/8a0e6d64dbfbd56be469d0f6d1a320d8/view/movie/M/302310020.mp4" mode="RTC" autoplay style="width: 300px; height: 225px;" /> -->

@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/myMovie/movieLists/movieLists",
     "pages/welcome/welcome",
-    "pages/movie/movie/movie",
     "test/test",
+    "pages/movie/movie/movie",
     "pages/movie/subject_comments/subject_comments",
     "pages/movie/movie_cast/movie_cast",
     "pages/movie/movie_morePhoto/movie_morePhoto",
@@ -16,7 +17,8 @@
     "pages/movie/movie-search/movie-search",
     "pages/movie/movie_castPhoto/movie_castPhoto",
     "pages/movie/movie_castWorks/movie_castWorks",
-    "pages/movie/subject_reviews/subject_reviews"
+    "pages/book/book",
+    "pages/myMovie/movieDetail/movieDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,20 +28,26 @@
     "backgroundColor": "#cccccc"
   },
   "tabBar": {
-    "color": "#ccc",
-    "selectedColor": "blue",
+    "color": "#333",
+    "selectedColor": "#00CD00",
     "list": [
       {
         "pagePath": "pages/movie/movie/movie",
         "text": "豆瓣电影",
-        "iconPath": "/images/tab/dianying.png",
-        "selectedIconPath": "/images/tab/dianying_hl.png"
+        "iconPath": "/images/myIcon/电影 (2).png",
+        "selectedIconPath": "/images/myIcon/电影.png"
+      },
+      {
+        "pagePath": "pages/myMovie/movieLists/movieLists",
+        "text": "我的电影",
+        "iconPath": "/images/myIcon/电影院 (2).png",
+        "selectedIconPath": "/images/myIcon/电影院.png"
       },
       {
         "pagePath": "pages/article/article/article",
         "text": "最新影评",
-        "iconPath": "/images/tab/yuedu.png",
-        "selectedIconPath": "/images/tab/yuedu_hl.png"
+        "iconPath": "/images/myIcon/文章 (2).png",
+        "selectedIconPath": "/images/myIcon/文章.png"
       }
     ]
   },
