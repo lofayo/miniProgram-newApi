@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/myMovie/movieLists/movieLists",
     "pages/welcome/welcome",
+    "pages/myMovie/movieLists/movieLists",
     "test/test",
     "pages/movie/movie/movie",
     "pages/movie/subject_comments/subject_comments",

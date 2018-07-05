@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
@@ -38,6 +38,12 @@
 					"pathName": "pages/article/article/article",
 					"query": "name=lofayo",
 					"scene": "1001"
+				},
+				{
+					"id": 1,
+					"name": "强制更新",
+					"pathName": "pages/welcome/welcome",
+					"query": ""
 				}
 			]
 		}
